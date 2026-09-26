@@ -1,29 +1,25 @@
-import { useEffect, useState } from "react";
-
-const roles = ["Software", "Design", "Development", "Research"];
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { copy, type Copy } from "./copy";
+import { hrefFor, readRoute, type Lang, type Page } from "./locale";
 
 const projects = [
   {
     name: "Stemperl",
-    note: "Built with a friend. A fast, simple way to collect stamps.",
     href: "https://stemperl.at",
     preview: "/previews/stemperl.jpg",
   },
   {
     name: "My Digital Menus",
-    note: "Inspired by vintage letterboards.",
     href: "https://mydigitalmenus.at",
     preview: "/previews/menus.jpg",
   },
   {
     name: "Raistell",
-    note: "A website for a client.",
     href: "https://raistell.de",
     preview: "/previews/raistell.jpg",
   },
   {
     name: "Wiener Entkernung",
-    note: "A website for a client.",
     href: "https://wiener-entkernung.at",
     preview: "/previews/entkernung.jpg",
   },
@@ -32,7 +28,7 @@ const projects = [
 const links = [
   {
     label: "Mail",
-    href: "mailto:hello@ahmedinfajic.com",
+    href: "mailto:contact@ahmedinfajic.com",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3.2" y="5.2" width="17.6" height="13.6" rx="2.2" />
@@ -76,7 +72,101 @@ function Arrow({ direction }: { direction: "previous" | "next" }) {
   );
 }
 
-function Projects() {
+function About({ t, onCv }: { t: Copy; onCv: () => void }) {
+  const track = useRef<HTMLDivElement>(null);
+  const [page, setPage] = useState(0);
+
+  function go(next: number) {
+    const el = track.current;
+    if (!el) return;
+    const index = Math.max(0, Math.min(2, next));
+    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
+    setPage(index);
+  }
+
+  function onScroll() {
+    const el = track.current;
+    if (!el || el.clientWidth === 0) return;
+    setPage(Math.round(el.scrollLeft / el.clientWidth));
+  }
+
+  return (
+    <section className="about" id="about" aria-label={t.aboutLabel}>
+      <p className="about-label">{t.aboutLabel}</p>
+      <div className="about-row">
+        <button
+          className="projects-arrow"
+          type="button"
+          aria-label={t.previous}
+          disabled={page === 0}
+          onClick={() => go(page - 1)}
+        >
+          <Arrow direction="previous" />
+        </button>
+        <div className="about-main">
+          <div className="about-track" ref={track} onScroll={onScroll}>
+            <p className="about-page">{t.about1}</p>
+            <p className="about-page">
+              {t.about2Before}
+              <button type="button" onClick={onCv}>{t.aboutCv}</button>.
+            </p>
+            <p className="about-page">
+              {t.about3Before}
+              <button
+                type="button"
+                onClick={() =>
+                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                }
+              >{t.aboutProjects}</button>
+              {t.aboutAnd}
+              <button
+                type="button"
+                onClick={() =>
+                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
+                }
+              >{t.aboutProducts}</button>
+              {t.about3After}
+            </p>
+          </div>
+          <p className="about-index" aria-live="polite">
+            {t.swipe} <span>{page + 1} {t.of} 3</span>
+          </p>
+        </div>
+        <button
+          className="projects-arrow"
+          type="button"
+          aria-label={t.next}
+          disabled={page === 2}
+          onClick={() => go(page + 1)}
+        >
+          <Arrow direction="next" />
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function Services({ t, onConnect }: { t: Copy; onConnect: () => void }) {
+  return (
+    <section className="services" id="services" aria-label={t.servicesLabel}>
+      <p className="services-label">{t.servicesLabel}</p>
+      <p className="services-lead">{t.servicesLead}</p>
+      <ul className="services-list">
+        {t.services.map((item) => (
+          <li key={item.name}>
+            <p className="services-name">{item.name}</p>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+      <button className="services-cta" type="button" onClick={onConnect}>
+        {t.connect}
+      </button>
+    </section>
+  );
+}
+
+function Projects({ t }: { t: Copy }) {
   const [page, setPage] = useState(0);
   const [mobile, setMobile] = useState(false);
 
@@ -96,14 +186,14 @@ function Projects() {
   const visible = mobile ? projects.slice(page, page + 1) : projects;
 
   return (
-    <section className="projects" aria-label="Projects">
-      <p className="projects-label">Projects</p>
+    <section className="projects" id="projects" aria-label={t.projectsLabel}>
+      <p className="projects-label">{t.projectsLabel}</p>
       <div className="projects-row">
         {mobile ? (
           <button
             className="projects-arrow"
             type="button"
-            aria-label="Previous project"
+            aria-label={t.previousProject}
             disabled={page === 0}
             onClick={() => setPage(page - 1)}
           >
@@ -116,7 +206,7 @@ function Projects() {
               <a href={project.href} target="_blank" rel="noreferrer">
                 <img className="project-preview" src={project.preview} alt="" />
                 <span className="project-name">{project.name}</span>
-                <span className="project-note">{project.note}</span>
+                <span className="project-note">{t.projectNotes[projects.indexOf(project)]}</span>
                 <span className="project-host">
                   {project.href.replace("https://", "")}
                 </span>
@@ -128,7 +218,7 @@ function Projects() {
           <button
             className="projects-arrow"
             type="button"
-            aria-label="Next project"
+            aria-label={t.nextProject}
             disabled={page >= projects.length - 1}
             onClick={() => setPage(page + 1)}
           >
@@ -140,89 +230,381 @@ function Projects() {
   );
 }
 
+const cvEntries = [
+  {
+    years: "2025–now",
+    place: "Siemens",
+    note: "Software for managing the power grid",
+  },
+  {
+    years: "2024",
+    place: "Bundesrechenzentrum",
+    note: "Software for Austria’s Ministry of Social Affairs",
+  },
+  {
+    years: "2022–2024",
+    place: "IBB Adaptive Solutions",
+    note: "Software for managing terms between companies",
+  },
+  {
+    years: "2020–2022",
+    place: "Focus Market Research",
+    note: "Software surrounding data collection",
+  },
+];
+
+const languages: { lang: Lang; code: string; label: string }[] = [
+  { lang: "en", code: "en", label: "English" },
+  { lang: "de", code: "de", label: "Deutsch" },
+  { lang: "bs", code: "bs", label: "Bosanski" },
+];
+
+function ConnectSheet({ t, onClose }: { t: Copy; onClose: () => void }) {
+  const items = links.map((link, index) => ({
+    ...link,
+    label: index === 0 ? t.mail : link.label,
+  }));
+
+  return (
+    <div className="sheet" role="presentation" onClick={onClose}>
+      <div
+        className="sheet-card"
+        role="dialog"
+        aria-label={t.connect}
+        aria-modal="true"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {items.map((link) => (
+          <a
+            key={link.href}
+            className="sheet-link"
+            href={link.href}
+            target={link.href.startsWith("http") ? "_blank" : undefined}
+            rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+          >
+            <span className="sheet-icon">{link.icon}</span>
+            <span>{link.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LanguageSheet({
+  t,
+  lang,
+  page,
+  onClose,
+}: {
+  t: Copy;
+  lang: Lang;
+  page: Page;
+  onClose: () => void;
+}) {
+  return (
+    <div className="sheet" role="presentation" onClick={onClose}>
+      <div
+        className="sheet-card"
+        role="dialog"
+        aria-label={t.language}
+        aria-modal="true"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {languages.map((item) => (
+          <a
+            key={item.lang}
+            className="sheet-link"
+            href={hrefFor(item.lang, page)}
+            aria-current={item.lang === lang ? "page" : undefined}
+          >
+            <span className="sheet-icon lang-mark">{item.code}</span>
+            <span>{item.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Header({
+  t,
+  lang,
+  page,
+  onConnect,
+  onLanguage,
+}: {
+  t: Copy;
+  lang: Lang;
+  page: Page;
+  onConnect: () => void;
+  onLanguage: () => void;
+}) {
+  const section = (id: string) => (page === "home" ? `#${id}` : `/${lang}#${id}`);
+
+  return (
+    <header className="site-header">
+      <a className="site-name" href={hrefFor(lang)}>
+        Ahmedin Fajic
+      </a>
+      <nav className="site-nav" aria-label="Navigation">
+        <a href={section("about")}>{t.nav.about}</a>
+        <a href={section("services")}>{t.nav.services}</a>
+        <a href={section("projects")}>{t.nav.projects}</a>
+        <button type="button" aria-haspopup="dialog" onClick={onConnect}>
+          {t.nav.connect}
+        </button>
+        <button
+          className="lang-switch"
+          type="button"
+          aria-label={t.language}
+          aria-haspopup="dialog"
+          onClick={onLanguage}
+        >
+          <span aria-hidden="true">A文</span>
+        </button>
+      </nav>
+    </header>
+  );
+}
+
+function Footer({ t, lang }: { t: Copy; lang: Lang }) {
+  return (
+    <footer className="site-footer">
+      <p>© {new Date().getFullYear()} Ahmedin Fajic</p>
+      <nav aria-label={t.legalNav}>
+        <a href={hrefFor(lang, "impressum")}>{t.imprint}</a>
+        <a href={hrefFor(lang, "datenschutz")}>{t.privacy}</a>
+      </nav>
+    </footer>
+  );
+}
+
+function Legal({
+  t,
+  lang,
+  page,
+  title,
+  onConnect,
+  onLanguage,
+  children,
+}: {
+  t: Copy;
+  lang: Lang;
+  page: Page;
+  title: string;
+  onConnect: () => void;
+  onLanguage: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <>
+      <Header t={t} lang={lang} page={page} onConnect={onConnect} onLanguage={onLanguage} />
+      <main className="legal">
+        <h1>{title}</h1>
+        {children}
+      </main>
+      <Footer t={t} lang={lang} />
+    </>
+  );
+}
+
 function App() {
+  const { lang, page } = readRoute(window.location.pathname);
+  const t = copy[lang];
   const [open, setOpen] = useState(false);
+  const [cv, setCv] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
 
   useEffect(() => {
-    if (!open) return;
+    document.documentElement.lang = lang;
+    document.title = page === "home" ? "Ahmedin Fajic" : `${page === "impressum" ? t.imprint : t.privacy} — Ahmedin Fajic`;
+  }, [lang, page, t]);
+
+  useEffect(() => {
+    if (!open && !cv && !langOpen) return;
 
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      setCv(false);
+      setLangOpen(false);
     }
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, [open, cv, langOpen]);
+
+  function showConnect() {
+    setLangOpen(false);
+    setOpen(true);
+  }
+
+  function showLanguage() {
+    setOpen(false);
+    setCv(false);
+    setLangOpen(true);
+  }
+
+  const sheets = (
+    <>
+      {open ? <ConnectSheet t={t} onClose={() => setOpen(false)} /> : null}
+      {langOpen ? (
+        <LanguageSheet t={t} lang={lang} page={page} onClose={() => setLangOpen(false)} />
+      ) : null}
+    </>
+  );
+
+  if (page === "impressum") {
+    return (
+      <>
+        <Legal
+          t={t}
+          lang={lang}
+          page={page}
+          title={t.imprint}
+          onConnect={showConnect}
+          onLanguage={showLanguage}
+        >
+          <p>
+            <span>{t.impName}</span>
+            Ahmedin Fajić
+          </p>
+          <p>
+            <span>{t.impAddress}</span>
+            Lorenz-Müller-Gasse 2/4/24, 1200 Wien, Österreich
+          </p>
+          <p>
+            <span>{t.impEmail}</span>
+            <a href="mailto:ahmedinfajic@gmail.com">ahmedinfajic@gmail.com</a>
+          </p>
+          <p>
+            <span>{t.impPurpose}</span>
+            {t.impPurposeText}
+          </p>
+          <p>
+            <span>{t.impAuthority}</span>
+            Magistrat der Stadt Wien, Magistratisches Bezirksamt für den 2./20. Bezirk
+          </p>
+          <p>
+            <span>{t.impLaw}</span>
+            {t.impLawText}{" "}
+            <a href="https://www.ris.bka.gv.at" target="_blank" rel="noreferrer">
+              www.ris.bka.gv.at
+            </a>
+          </p>
+          <p>
+            <span>{t.impMember}</span>
+            Wirtschaftskammer Wien
+          </p>
+          <p>
+            <span>{t.impGisa}</span>
+            39944122
+          </p>
+        </Legal>
+        {sheets}
+      </>
+    );
+  }
+
+  if (page === "datenschutz") {
+    return (
+      <>
+        <Legal
+          t={t}
+          lang={lang}
+          page={page}
+          title={t.privacy}
+          onConnect={showConnect}
+          onLanguage={showLanguage}
+        >
+          <p className="legal-intro">{t.privacyIntro}</p>
+          {t.privacyHeads.map((heading) => (
+            <div key={heading}>
+              <h2>{heading}</h2>
+              <p>{t.privacyTodo}</p>
+            </div>
+          ))}
+        </Legal>
+        {sheets}
+      </>
+    );
+  }
 
   return (
     <>
-    <div className="page">
-      <div className="glass-light" aria-hidden="true">
-        <div className="glass-light-drift">
-          <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-            <g transform="rotate(26 1080 30)">
-              <rect x="760" y="-220" width="70" height="1480" fill="#e6b22e" opacity="0.92" />
-              <rect x="870" y="-220" width="96" height="1480" fill="#e07b78" opacity="0.72" />
-              <rect x="1004" y="-220" width="16" height="1480" fill="#6f9652" opacity="0.8" />
-              <rect x="1060" y="-220" width="84" height="1480" fill="#f0c84a" opacity="0.88" />
-              <rect x="1184" y="-220" width="52" height="1480" fill="#e8a24a" opacity="0.58" />
-              <rect x="1276" y="-220" width="20" height="1480" fill="#c85d66" opacity="0.55" />
-              <rect x="1336" y="-220" width="78" height="1480" fill="#edd07a" opacity="0.7" />
-            </g>
-          </svg>
+      <Header t={t} lang={lang} page={page} onConnect={showConnect} onLanguage={showLanguage} />
+      <section className="hero">
+        <div className="hero-copy">
+          <p>{t.hero}</p>
+          <div className="hero-actions">
+            <button className="hero-cta" type="button" onClick={showConnect}>
+              {t.connect}
+            </button>
+            <a className="hero-cta hero-cta-line" href="#services">
+              {t.servicesButton}
+            </a>
+          </div>
         </div>
-      </div>
+        <div className="hero-photo">
+          <img src="/glass.jpg?v=6" alt="" />
+        </div>
+      </section>
 
-      <header className="nav">
-        <p className="name">Ahmedin Fajic</p>
-        <button
-          className="connect"
-          type="button"
-          aria-expanded={open}
-          aria-haspopup="dialog"
-          onClick={() => setOpen(true)}
-        >
-          connect
-        </button>
-      </header>
+      {sheets}
 
-      <ul className="roles">
-        {roles.map((role) => (
-          <li key={role}>{role}</li>
-        ))}
-      </ul>
+      <About t={t} onCv={() => setCv(true)} />
 
-      <div className="photo">
-        <img src="/portrait.png?v=6" alt="" />
-      </div>
-
-      {open ? (
-        <div className="sheet" role="presentation" onClick={() => setOpen(false)}>
+      {cv ? (
+        <div className="sheet" role="presentation" onClick={() => setCv(false)}>
           <div
-            className="sheet-card"
+            className="sheet-card cv-card"
             role="dialog"
-            aria-label="Connect"
+            aria-label={t.cvLabel}
             aria-modal="true"
             onClick={(event) => event.stopPropagation()}
           >
-            {links.map((link) => (
-              <a
-                key={link.label}
-                className="sheet-link"
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-              >
-                <span className="sheet-icon">{link.icon}</span>
-                <span>{link.label}</span>
-              </a>
-            ))}
+            <button className="cv-close" type="button" onClick={() => setCv(false)}>
+              {t.close}
+            </button>
+            <img className="cv-photo" src="/portrait.png" alt="" />
+            <div className="cv-body">
+              <p className="cv-name">Ahmedin Fajic</p>
+              <ol className="cv-line">
+                {cvEntries.map((entry, index) => (
+                  <li key={entry.place}>
+                    <span className="cv-years">{t.cvYears[index]}</span>
+                    <span className="cv-place">{entry.place}</span>
+                    <span className="cv-note">{t.cvNotes[index]}</span>
+                  </li>
+                ))}
+              </ol>
+              <div className="cv-foot">
+                <p>
+                  <span>{t.study}</span>
+                  {t.studyText}
+                </p>
+                <p>
+                  <span>{t.school}</span>
+                  {t.schoolText}
+                </p>
+                <p>
+                  <span>{t.languages}</span>
+                  {t.languagesText}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       ) : null}
-    </div>
 
-    <Projects />
+      <Services t={t} onConnect={showConnect} />
+      <Projects t={t} />
+      <section className="closing" aria-label={t.closingLabel}>
+        <p>{t.closing}</p>
+        <a href="mailto:contact@ahmedinfajic.com">contact@ahmedinfajic.com</a>
+      </section>
+      <Footer t={t} lang={lang} />
     </>
   );
 }
