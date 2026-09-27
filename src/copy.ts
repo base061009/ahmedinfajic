@@ -3,6 +3,9 @@ import type { Lang } from "./locale";
 export type Copy = {
   nav: { about: string; services: string; projects: string; connect: string };
   language: string;
+  menu: string;
+  openMenu: string;
+  closeMenu: string;
   hero: string;
   connect: string;
   servicesButton: string;
@@ -10,11 +13,7 @@ export type Copy = {
   about1: string;
   about2Before: string;
   aboutCv: string;
-  about3Before: string;
-  aboutProjects: string;
-  aboutAnd: string;
-  aboutProducts: string;
-  about3After: string;
+  about3: string;
   swipe: string;
   of: string;
   previous: string;
@@ -26,8 +25,10 @@ export type Copy = {
   previousProject: string;
   nextProject: string;
   projectNotes: [string, string, string, string];
+  projectTags: { saas: string; website: string };
   closingLabel: string;
   closing: string;
+  closingNote: string;
   cvLabel: string;
   close: string;
   cvYears: [string, string, string, string];
@@ -39,6 +40,8 @@ export type Copy = {
   languages: string;
   languagesText: string;
   mail: string;
+  phone: string;
+  phoneScan: string;
   imprint: string;
   privacy: string;
   legalNav: string;
@@ -61,6 +64,9 @@ export const copy: Record<Lang, Copy> = {
   en: {
     nav: { about: "about", services: "services", projects: "projects", connect: "connect" },
     language: "Language",
+    menu: "Menu",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
     hero: "I design and develop software, from enterprise systems to client projects and my own ideas.",
     connect: "Connect",
     servicesButton: "Services",
@@ -70,31 +76,27 @@ export const copy: Record<Lang, Copy> = {
     about2Before:
       "I work on Gridscale X at Siemens. Before that I built software for Austria’s Ministry of Social Affairs at BRZ, and for other companies. You can see them in ",
     aboutCv: "my CV",
-    about3Before: "In 2025 I started my own company. I build a few ",
-    aboutProjects: "projects",
-    aboutAnd: " and ",
-    aboutProducts: "products",
-    about3After:
-      ", and I am designing a solution that lets tax advisors in Austria prepare their offerings.",
+    about3:
+      "In 2025 I started my own company. I build a few projects and products, and I am designing a solution that lets tax advisors in Austria prepare their offerings.",
     swipe: "swipe",
     of: "of",
     previous: "Previous",
     next: "Next",
     servicesLabel: "Services",
     servicesLead:
-      "I build websites and small products that do more than sit there. Most of what I make has logic behind it: something that captures leads, tracks something, or runs on its own.",
+      "I build websites and software, usually with some real logic or purpose behind them: something that runs a business, captures customers, or handles work on its own.",
     services: [
       {
-        name: "Custom websites",
-        text: "Websites built around how a business actually gets customers. Lead funnels, booking flows, tracking pages, dashboards that show what's happening in real time.",
+        name: "Websites",
+        text: "Landing pages with thought-through visual design, or websites with actual logic like lead funnels, booking flows and more.",
+      },
+      {
+        name: "Business software",
+        text: "Internal tools that replace spreadsheets and manual repetitive work: systems built around how a team actually operates.",
       },
       {
         name: "SaaS products",
-        text: "Full products, not just landing pages. Logins, data, and the backend logic that makes them work. I built a client portal for tax advisors this way, and a few other tools before that.",
-      },
-      {
-        name: "Freelance development",
-        text: "For anything that needs actual code instead of a page builder. From one feature to the full build.",
+        text: "For people with a vision. I help design and develop your SaaS product from the start to the first customers.",
       },
     ],
     projectsLabel: "Personal projects",
@@ -106,8 +108,10 @@ export const copy: Record<Lang, Copy> = {
       "A website for a friend.",
       "A website for a friend.",
     ],
-    closingLabel: "Contact",
+    projectTags: { saas: "SaaS", website: "Website" },
+    closingLabel: "Connect",
     closing: "Have a project in mind?",
+    closingNote: "I usually reply within a day or two.",
     cvLabel: "CV",
     close: "Close",
     cvYears: ["2025–now", "2024", "2022–2024", "2020–2022"],
@@ -124,6 +128,8 @@ export const copy: Record<Lang, Copy> = {
     languages: "Languages",
     languagesText: "German, Bosnian, English",
     mail: "Mail",
+    phone: "Phone",
+    phoneScan: "Scan to call",
     imprint: "Imprint",
     privacy: "Privacy",
     legalNav: "Legal",
@@ -144,6 +150,9 @@ export const copy: Record<Lang, Copy> = {
   de: {
     nav: { about: "über", services: "leistungen", projects: "projekte", connect: "kontakt" },
     language: "Sprache",
+    menu: "Menü",
+    openMenu: "Menü öffnen",
+    closeMenu: "Menü schließen",
     hero: "Ich entwerfe und entwickle Software, von Systemen für Unternehmen über Kundenprojekte bis zu eigenen Ideen.",
     connect: "Kontakt",
     servicesButton: "Leistungen",
@@ -153,31 +162,27 @@ export const copy: Record<Lang, Copy> = {
     about2Before:
       "Ich arbeite an Gridscale X bei Siemens. Davor habe ich Software für das österreichische Sozialministerium bei der BRZ gebaut, und für andere Firmen. Das siehst du in meinem ",
     aboutCv: "Lebenslauf",
-    about3Before: "2025 habe ich meine eigene Firma gegründet. Ich baue ein paar ",
-    aboutProjects: "Projekte",
-    aboutAnd: " und ",
-    aboutProducts: "Produkte",
-    about3After:
-      " und entwerfe eine Lösung, mit der Steuerberater in Österreich ihre Angebote erstellen können.",
+    about3:
+      "2025 habe ich meine eigene Firma gegründet. Ich baue ein paar Projekte und Produkte und entwerfe eine Lösung, mit der Steuerberater in Österreich ihre Angebote erstellen können.",
     swipe: "wischen",
     of: "von",
     previous: "Zurück",
     next: "Weiter",
     servicesLabel: "Leistungen",
     servicesLead:
-      "Ich baue Websites und kleine Produkte, die mehr tun, als nur dazustehen. Hinter dem meisten steckt Logik: etwas, das Anfragen aufnimmt, etwas verfolgt oder von allein läuft.",
+      "Ich baue Websites und Software, meist mit echter Logik oder einem Zweck dahinter: etwas, das einen Betrieb laufen lässt, Kunden gewinnt oder Arbeit von allein erledigt.",
     services: [
       {
         name: "Websites",
-        text: "Websites so gebaut, wie ein Betrieb wirklich Kunden gewinnt. Lead Funnels, Buchungsabläufe, Trackingseiten und Dashboards, die in Echtzeit zeigen, was passiert.",
+        text: "Landingpages mit durchdachtem visuellem Design, oder Websites mit echter Logik wie Lead Funnels, Buchungsabläufe und mehr.",
+      },
+      {
+        name: "Betriebssoftware",
+        text: "Interne Tools, die Tabellen und wiederkehrende Handarbeit ersetzen: Systeme so gebaut, wie ein Team wirklich arbeitet.",
       },
       {
         name: "SaaS Produkte",
-        text: "Ganze Produkte, nicht nur Landingpages. Anmeldung, Daten und die Logik dahinter. So habe ich ein Kundenportal für Steuerberater gebaut, und davor ein paar andere Tools.",
-      },
-      {
-        name: "Entwicklung",
-        text: "Für alles, was echten Code braucht statt eines Baukastens. Von einer Funktion bis zum ganzen Aufbau.",
+        text: "Für Menschen mit einer Vision. Ich helfe beim Entwerfen und Entwickeln deines SaaS Produkts, vom Start bis zu den ersten Kunden.",
       },
     ],
     projectsLabel: "Eigene Projekte",
@@ -189,8 +194,10 @@ export const copy: Record<Lang, Copy> = {
       "Eine Website für einen Freund.",
       "Eine Website für einen Freund.",
     ],
+    projectTags: { saas: "SaaS", website: "Website" },
     closingLabel: "Kontakt",
     closing: "Hast du ein Projekt im Kopf?",
+    closingNote: "Ich antworte meist innerhalb von ein oder zwei Tagen.",
     cvLabel: "Lebenslauf",
     close: "Schließen",
     cvYears: ["2025–heute", "2024", "2022–2024", "2020–2022"],
@@ -207,6 +214,8 @@ export const copy: Record<Lang, Copy> = {
     languages: "Sprachen",
     languagesText: "Deutsch, Bosnisch, Englisch",
     mail: "Mail",
+    phone: "Telefon",
+    phoneScan: "Scannen zum Anrufen",
     imprint: "Impressum",
     privacy: "Datenschutz",
     legalNav: "Rechtliches",
@@ -227,40 +236,39 @@ export const copy: Record<Lang, Copy> = {
   bs: {
     nav: { about: "o meni", services: "usluge", projects: "projekti", connect: "kontakt" },
     language: "Jezik",
+    menu: "Meni",
+    openMenu: "Otvori meni",
+    closeMenu: "Zatvori meni",
     hero: "Dizajniram i razvijam softver, od sistema za firme do projekata za klijente i vlastitih ideja.",
     connect: "Kontakt",
     servicesButton: "Usluge",
     aboutLabel: "O meni",
     about1:
-      "Profesionalni sam softverski developer sa više od šest godina iskustva na rješenjima za različite firme i ljude.",
+      "Profesionalni sam programer sa više od šest godina iskustva. Radio sam za različite firme i ljude.",
     about2Before:
       "Radim na Gridscale X u Siemensu. Prije toga sam radio softver za austrijsko Ministarstvo socijalnih poslova u BRZ-u, i za druge firme. Možeš ih vidjeti u mom ",
     aboutCv: "CV-u",
-    about3Before: "2025. sam pokrenuo svoju firmu. Gradim nekoliko ",
-    aboutProjects: "projekata",
-    aboutAnd: " i ",
-    aboutProducts: "proizvoda",
-    about3After:
-      " i radim rješenje kojim poreski savjetnici u Austriji pripremaju svoje ponude.",
+    about3:
+      "2025. sam pokrenuo svoju firmu. Radim na nekoliko projekata i proizvoda, i pravim rješenje kojim poreski savjetnici u Austriji spremaju svoje ponude.",
     swipe: "prevuci",
     of: "od",
-    previous: "Prethodno",
-    next: "Sljedeće",
+    previous: "Nazad",
+    next: "Dalje",
     servicesLabel: "Usluge",
     servicesLead:
-      "Gradim web stranice i male proizvode koji ne stoje samo tu. Iza većine onoga što napravim stoji logika: nešto što skuplja upite, nešto prati ili radi samo.",
+      "Pravim web stranice i softver, obično sa pravom logikom ili svrhom iza: nešto što vodi firmu, dovodi klijente ili samo radi posao.",
     services: [
       {
         name: "Web stranice",
-        text: "Web stranice građene prema tome kako firma stvarno dolazi do klijenata. Tokovi za upite, rezervacije, stranice za praćenje i dashboardi koji u stvarnom vremenu pokazuju šta se događa.",
+        text: "Landing stranice sa promišljenim dizajnom, ili web stranice sa pravom logikom, kao što su tokovi za upite, rezervacije i slično.",
+      },
+      {
+        name: "Poslovni softver",
+        text: "Interni alati koji zamjenjuju tabele i posao koji se stalno ponavlja: sistemi građeni onako kako tim stvarno radi.",
       },
       {
         name: "SaaS proizvodi",
-        text: "Cijeli proizvodi, ne samo početne stranice. Prijava, podaci i logika u pozadini koja ih drži. Ovako sam napravio portal za poreske savjetnike, i prije toga još nekoliko alata.",
-      },
-      {
-        name: "Razvoj",
-        text: "Za sve čemu treba pravi kod, a ne gotov alat za stranice. Od jedne funkcije do cijele izrade.",
+        text: "Za ljude sa vizijom. Pomažem ti da dizajniraš i razviješ svoj SaaS proizvod, od početka do prvih klijenata.",
       },
     ],
     projectsLabel: "Lični projekti",
@@ -268,19 +276,21 @@ export const copy: Record<Lang, Copy> = {
     nextProject: "Sljedeći projekat",
     projectNotes: [
       "Skupljanje markica, napravljeno s prijateljem.",
-      "Inspirisano starim slovnim tablama.",
+      "Po uzoru na stare table sa slovima.",
       "Web stranica za prijatelja.",
       "Web stranica za prijatelja.",
     ],
+    projectTags: { saas: "SaaS", website: "Web stranica" },
     closingLabel: "Kontakt",
     closing: "Imaš projekat na umu?",
+    closingNote: "Obično odgovorim u roku od dan-dva.",
     cvLabel: "CV",
     close: "Zatvori",
     cvYears: ["2025–danas", "2024", "2022–2024", "2020–2022"],
     cvNotes: [
       "Softver za upravljanje elektroenergetskom mrežom",
       "Softver za austrijsko Ministarstvo socijalnih poslova",
-      "Softver za upravljanje uslovima između firmi",
+      "Softver za uslove između firmi",
       "Softver oko prikupljanja podataka",
     ],
     study: "Studij",
@@ -290,6 +300,8 @@ export const copy: Record<Lang, Copy> = {
     languages: "Jezici",
     languagesText: "Njemački, bosanski, engleski",
     mail: "Mail",
+    phone: "Telefon",
+    phoneScan: "Skeniraj za poziv",
     imprint: "Impresum",
     privacy: "Privatnost",
     legalNav: "Pravno",
