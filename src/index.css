@@ -993,10 +993,30 @@ ul {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(22, 22, 24, 0.28);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  animation: sheet-backdrop 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(22, 22, 24, 0.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  backdrop-filter: blur(22px) saturate(1.2);
+}
+
+.sheet > * {
+  position: relative;
+  z-index: 1;
+}
+
+@supports not (
+  ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px)))
+) {
+  .sheet::before {
+    background: rgba(22, 22, 24, 0.62);
+  }
 }
 
 .sheet-card {
@@ -1006,12 +1026,10 @@ ul {
   gap: 22px;
   padding: 26px 30px 20px;
   border-radius: 26px;
-  background: rgba(245, 245, 247, 0.94);
+  background: rgba(245, 245, 247, 0.96);
   box-shadow:
     0 0 0 0.5px rgba(0, 0, 0, 0.06),
     0 24px 60px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(28px) saturate(1.4);
-  -webkit-backdrop-filter: blur(28px) saturate(1.4);
   transform-origin: 80% 0%;
   animation: sheet-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1181,28 +1199,16 @@ ul {
   }
 }
 
-@keyframes sheet-backdrop {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes sheet-in {
   from {
-    opacity: 0;
-    transform: scale(0.82) translateY(-18px);
+    transform: scale(0.92) translateY(-14px);
   }
   to {
-    opacity: 1;
     transform: scale(1) translateY(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sheet,
   .sheet-card {
     animation: none;
   }

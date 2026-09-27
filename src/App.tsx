@@ -527,6 +527,12 @@ function App() {
   }, [lang, page, t]);
 
   useEffect(() => {
+    const image = new Image();
+    image.decoding = "async";
+    image.src = "/portrait.png";
+  }, []);
+
+  useEffect(() => {
     if (!open && !cv && !langOpen) return;
 
     function onKey(event: KeyboardEvent) {
@@ -691,7 +697,15 @@ function App() {
             <button className="cv-close" type="button" onClick={() => setCv(false)}>
               {t.close}
             </button>
-            <img className="cv-photo" src="/portrait.png" alt="" />
+            <img
+              className="cv-photo"
+              src="/portrait.png"
+              alt=""
+              width={1280}
+              height={720}
+              decoding="sync"
+              fetchPriority="high"
+            />
             <div className="cv-body">
               <p className="cv-name">Ahmedin Fajic</p>
               <ol className="cv-line">
