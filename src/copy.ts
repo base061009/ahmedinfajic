@@ -24,7 +24,7 @@ export type Copy = {
   projectsLabel: string;
   previousProject: string;
   nextProject: string;
-  projectNotes: [string, string, string, string];
+  projectNotes: string[];
   projectTags: { saas: string; website: string };
   closingLabel: string;
   closing: string;
@@ -107,6 +107,7 @@ export const copy: Record<Lang, Copy> = {
       "Inspired by vintage letterboards.",
       "A website for a friend.",
       "A website for a friend.",
+      "My secondary website.",
     ],
     projectTags: { saas: "SaaS", website: "Website" },
     closingLabel: "Connect",
@@ -193,6 +194,7 @@ export const copy: Record<Lang, Copy> = {
       "Inspiriert von alten Buchstabentafeln.",
       "Eine Website für einen Freund.",
       "Eine Website für einen Freund.",
+      "Meine zweite Website.",
     ],
     projectTags: { saas: "SaaS", website: "Website" },
     closingLabel: "Kontakt",
@@ -279,6 +281,7 @@ export const copy: Record<Lang, Copy> = {
       "Po uzoru na stare table sa slovima.",
       "Web stranica za prijatelja.",
       "Web stranica za prijatelja.",
+      "Moja druga web stranica.",
     ],
     projectTags: { saas: "SaaS", website: "Web stranica" },
     closingLabel: "Kontakt",

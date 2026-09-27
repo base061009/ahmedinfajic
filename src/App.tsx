@@ -27,6 +27,12 @@ const projects = [
     preview: "/previews/entkernung.jpg",
     kind: "website",
   },
+  {
+    name: "informatically",
+    href: "https://informatically.com",
+    preview: "/previews/informatically.jpg",
+    kind: "website",
+  },
 ] as const;
 
 const phoneHref = "tel:+4367763472758";
@@ -255,10 +261,17 @@ const languages: { lang: Lang; code: string; label: string }[] = [
 ];
 
 function ConnectSheet({ t, onClose }: { t: Copy; onClose: () => void }) {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setReady(true), 480);
+    return () => window.clearTimeout(id);
+  }, []);
+
   return (
     <div className="sheet" role="presentation" onClick={onClose}>
       <div
-        className="sheet-card connect-card"
+        className={`sheet-card connect-card${ready ? " is-ready" : ""}`}
         role="dialog"
         aria-label={t.connect}
         aria-modal="true"
