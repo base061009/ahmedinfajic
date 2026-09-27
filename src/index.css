@@ -170,12 +170,14 @@ ul {
   line-height: 1;
 }
 
-.site-nav a:hover,
-.site-nav button:hover,
-.site-footer a:hover,
-.menu-panel a:hover,
-.menu-panel button:hover {
-  color: rgba(0, 0, 0, 0.45);
+@media (hover: hover) and (pointer: fine) {
+  .site-nav a:hover,
+  .site-nav button:hover,
+  .site-footer a:hover,
+  .menu-panel a:hover,
+  .menu-panel button:hover {
+    color: rgba(0, 0, 0, 0.45);
+  }
 }
 
 .hero {
@@ -366,13 +368,13 @@ ul {
   }
 
   .site-name {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .site-nav {
     flex-wrap: nowrap;
     gap: 0.85rem;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .site-nav-links {

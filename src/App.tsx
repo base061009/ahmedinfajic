@@ -429,7 +429,10 @@ function Header({
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-label={menuOpen ? t.closeMenu : t.openMenu}
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={(event) => {
+            setMenuOpen(!menuOpen);
+            event.currentTarget.blur();
+          }}
         >
           <span className="menu-toggle-stage" aria-hidden="true">
             <span className={`menu-toggle-word${menuOpen ? " is-out" : " is-in"}`}>

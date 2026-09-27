@@ -103,7 +103,7 @@ export const copy: Record<Lang, Copy> = {
     previousProject: "Previous project",
     nextProject: "Next project",
     projectNotes: [
-      "Collect stamps, built with a friend.",
+      "Digital stamp card.",
       "Inspired by vintage letterboards.",
       "A website for a friend.",
       "A website for a friend.",
@@ -190,7 +190,7 @@ export const copy: Record<Lang, Copy> = {
     previousProject: "Vorheriges Projekt",
     nextProject: "Nächstes Projekt",
     projectNotes: [
-      "Stempel sammeln, gebaut mit einem Freund.",
+      "Digitale Stempelkarte.",
       "Inspiriert von alten Buchstabentafeln.",
       "Eine Website für einen Freund.",
       "Eine Website für einen Freund.",
@@ -277,7 +277,7 @@ export const copy: Record<Lang, Copy> = {
     previousProject: "Prethodni projekat",
     nextProject: "Sljedeći projekat",
     projectNotes: [
-      "Skupljanje markica, napravljeno s prijateljem.",
+      "Digitalna pečat kartica.",
       "Po uzoru na stare table sa slovima.",
       "Web stranica za prijatelja.",
       "Web stranica za prijatelja.",
