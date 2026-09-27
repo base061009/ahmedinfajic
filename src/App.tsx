@@ -58,19 +58,8 @@ const links = [
     ),
   },
   {
-    label: "Instagram",
-    href: "https://instagram.com/ahmedinfajic",
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5" />
-        <circle cx="12" cy="12" r="4.1" />
-        <circle cx="17.15" cy="6.85" r="0.9" fill="currentColor" stroke="none" />
-      </svg>
-    ),
-  },
-  {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/ahmedinfajic",
+    href: "https://linkedin.com/in/ahmedin-fajic",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3.4" y="3.4" width="17.2" height="17.2" rx="3.2" />
@@ -172,8 +161,31 @@ function Projects({ t }: { t: Copy }) {
       aria-label={t.projectsLabel}
     >
       <p className="projects-label">{t.projectsLabel}</p>
-      <div className="projects-row">
-        {swipe ? (
+      <div className="projects-main">
+        <ul
+          className="projects-track"
+          ref={track}
+          onScroll={swipe ? onScroll : undefined}
+        >
+          {projects.map((project, index) => (
+            <li key={project.href}>
+              <a href={project.href} target="_blank" rel="noreferrer">
+                <img className="project-preview" src={project.preview} alt="" />
+                <span className="project-heading">
+                  <span className="project-name">{project.name}</span>
+                  <span className="project-tag">{t.projectTags[project.kind]}</span>
+                </span>
+                <span className="project-note">{t.projectNotes[index]}</span>
+                <span className="project-host">
+                  {project.href.replace("https://", "")}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {swipe ? (
+        <div className="projects-controls">
           <button
             className="projects-arrow"
             type="button"
@@ -183,39 +195,12 @@ function Projects({ t }: { t: Copy }) {
           >
             <Arrow direction="previous" />
           </button>
-        ) : null}
-        <div className="projects-main">
-          <ul
-            className="projects-track"
-            ref={track}
-            onScroll={swipe ? onScroll : undefined}
-          >
-            {projects.map((project, index) => (
-              <li key={project.href}>
-                <a href={project.href} target="_blank" rel="noreferrer">
-                  <img className="project-preview" src={project.preview} alt="" />
-                  <span className="project-heading">
-                    <span className="project-name">{project.name}</span>
-                    <span className="project-tag">{t.projectTags[project.kind]}</span>
-                  </span>
-                  <span className="project-note">{t.projectNotes[index]}</span>
-                  <span className="project-host">
-                    {project.href.replace("https://", "")}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          {swipe ? (
-            <p className="projects-index" aria-live="polite">
-              {t.swipe}{" "}
-              <span>
-                {page + 1} {t.of} {projects.length}
-              </span>
-            </p>
-          ) : null}
-        </div>
-        {swipe ? (
+          <p className="projects-index" aria-live="polite">
+            {t.swipe}{" "}
+            <span>
+              {page + 1} {t.of} {projects.length}
+            </span>
+          </p>
           <button
             className="projects-arrow"
             type="button"
@@ -225,8 +210,8 @@ function Projects({ t }: { t: Copy }) {
           >
             <Arrow direction="next" />
           </button>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -295,10 +280,6 @@ function ConnectSheet({ t, onClose }: { t: Copy; onClose: () => void }) {
           <a className="sheet-link" href={links[1].href} target="_blank" rel="noreferrer">
             <span className="sheet-icon">{links[1].icon}</span>
             <span>{links[1].label}</span>
-          </a>
-          <a className="sheet-link" href={links[2].href} target="_blank" rel="noreferrer">
-            <span className="sheet-icon">{links[2].icon}</span>
-            <span>{links[2].label}</span>
           </a>
         </div>
         <div className="sheet-details">
@@ -629,11 +610,10 @@ function App() {
           onConnect={showConnect}
           onLanguage={showLanguage}
         >
-          <p className="legal-intro">{t.privacyIntro}</p>
-          {t.privacyHeads.map((heading) => (
-            <div key={heading}>
-              <h2>{heading}</h2>
-              <p>{t.privacyTodo}</p>
+          {t.privacySections.map((section) => (
+            <div key={section.title}>
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
             </div>
           ))}
         </Legal>

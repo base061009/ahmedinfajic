@@ -352,10 +352,6 @@ ul {
   font-size: 0.85rem;
 }
 
-.legal-intro {
-  color: #5a5a5a;
-}
-
 .legal a {
   text-underline-offset: 0.15em;
 }
@@ -731,11 +727,11 @@ ul {
 }
 
 .closing-lead {
-  max-width: 10em;
   margin: 0;
   font-size: clamp(28px, 3.4vw, 48px);
   line-height: 1.12;
   letter-spacing: -0.03em;
+  white-space: nowrap;
 }
 
 .closing a {
@@ -784,6 +780,14 @@ ul {
     max-width: none;
   }
 
+  .closing-lead {
+    font-size: clamp(22px, 6.4vw, 28px);
+  }
+
+  .projects-label {
+    font-size: clamp(20px, 5.5vw, 24px);
+  }
+
   .services-list {
     grid-template-columns: 1fr;
   }
@@ -798,23 +802,21 @@ ul {
   }
 }
 
-.projects-row {
+.projects-main {
+  min-width: 0;
+}
+
+.projects-swipe .projects-main {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.projects-controls {
   display: flex;
   align-items: center;
-  gap: calc(12px * var(--s));
-}
-
-.projects:not(.projects-swipe) .projects-row {
-  max-width: none;
-}
-
-.projects-swipe .projects-row {
-  max-width: 52rem;
-}
-
-.projects-main {
-  flex: 1;
-  min-width: 0;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
 }
 
 .projects-track {
@@ -857,10 +859,7 @@ ul {
   object-position: center top;
   margin-bottom: 0.7em;
   background: #ece8e2;
-  transition:
-    transform 180ms ease,
-    filter 180ms ease,
-    box-shadow 180ms ease;
+  transition: opacity 160ms ease;
 }
 
 .projects a {
@@ -869,15 +868,15 @@ ul {
   gap: 0.4em;
 }
 
-.projects a:hover .project-preview {
-  transform: scale(1.025);
-  filter: contrast(1.16) brightness(0.88) saturate(1.1);
-  box-shadow: 0 0 0 2px #000;
-}
+@media (hover: hover) and (pointer: fine) {
+  .projects a:hover .project-preview {
+    opacity: 0.82;
+  }
 
-.projects a:hover .project-name {
-  text-decoration: underline;
-  text-underline-offset: 0.14em;
+  .projects a:hover .project-name {
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+  }
 }
 
 .project-heading {
@@ -920,10 +919,11 @@ ul {
 }
 
 .projects-index {
-  margin: 1rem 0 0;
+  margin: 0;
   font-size: 16px;
   letter-spacing: -0.01em;
   color: rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .projects-index span {
@@ -976,8 +976,8 @@ ul {
 }
 
 @media (max-width: 720px) {
-  .projects-row {
-    gap: 8px;
+  .projects-controls {
+    gap: 0.75rem;
   }
 
   .projects-arrow {
