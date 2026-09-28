@@ -75,7 +75,7 @@ export const copy: Record<Lang, Copy> = {
       "Right now I work on Gridscale X at Siemens. Before that, among other things, I built software for Austria’s Ministry of Social Affairs at the Bundesrechenzentrum and contributed to several other projects. More about that can be found in ",
     aboutCv: "my CV",
     about3:
-      "In 2025 I founded my own company, with the intention of realizing my own ideas and accompanying other people on the path of digitalization.",
+      "In 2026 I founded my own company, with the intention of realizing my own ideas and accompanying other people on the path of digitalization.",
     swipe: "swipe",
     of: "of",
     previous: "Previous",
@@ -185,7 +185,7 @@ export const copy: Record<Lang, Copy> = {
       "Zurzeit arbeite ich an Gridscale X bei Siemens. Davor habe ich unter anderem beim Bundesrechenzentrum Software für das österreichische Sozialministerium gebaut und an einigen anderen Projekten mitgewirkt. Mehr dazu findet man in meinem ",
     aboutCv: "Lebenslauf",
     about3:
-      "Im Jahr 2025 habe ich meine eigene Firma gegründet, mit der Absicht, meine eigenen Ideen umzusetzen und andere Menschen auf dem Weg der Digitalisierung zu begleiten.",
+      "Im Jahr 2026 habe ich meine eigene Firma gegründet, mit der Absicht, meine eigenen Ideen umzusetzen und andere Menschen auf dem Weg der Digitalisierung zu begleiten.",
     swipe: "wischen",
     of: "von",
     previous: "Zurück",
@@ -295,7 +295,7 @@ export const copy: Record<Lang, Copy> = {
       "Trenutno radim na projektu Gridscale X u Siemensu. Među ostalim projektima sam radio softver za austrijsko Ministarstvo socijalnih poslova u BRZ-u. Više informacija se nalazi u ",
     aboutCv: "CV-u",
     about3:
-      "2025. sam pokrenuo svoju firmu, s namjerom da ostvarim vlastite ideje i da pratim druge ljude na putu digitalizacije.",
+      "2026. sam pokrenuo svoju firmu, s namjerom da ostvarim vlastite ideje i da pratim druge ljude na putu digitalizacije.",
     swipe: "prevuci",
     of: "od",
     previous: "Nazad",

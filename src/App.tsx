@@ -37,8 +37,8 @@ const projects = [
 
 const phoneHref = "tel:+4367763472758";
 const phoneDisplay = "+43 677 634 72758";
-const mailHref = "mailto:contact@ahmedinfajic.com";
-const mailDisplay = "contact@ahmedinfajic.com";
+const mailHref = "mailto:connect@ahmedinfajic.com";
+const mailDisplay = "connect@ahmedinfajic.com";
 
 const phoneIcon = (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -240,8 +240,8 @@ const cvEntries = [
 ];
 
 const languages: { lang: Lang; code: string; label: string }[] = [
-  { lang: "en", code: "en", label: "English" },
   { lang: "de", code: "de", label: "Deutsch" },
+  { lang: "en", code: "en", label: "English" },
   { lang: "bs", code: "bs", label: "Bosanski" },
 ];
 
@@ -721,7 +721,7 @@ function App() {
       <section className="closing" aria-label={t.closingLabel}>
         <p className="closing-label">{t.closingLabel}</p>
         <p className="closing-lead">{t.closing}</p>
-        <a href="mailto:contact@ahmedinfajic.com">contact@ahmedinfajic.com</a>
+        <a href="mailto:connect@ahmedinfajic.com">connect@ahmedinfajic.com</a>
         <p className="closing-note">{t.closingNote}</p>
       </section>
       <Footer t={t} lang={lang} />
