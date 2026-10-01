@@ -28,6 +28,12 @@ const projects = [
     kind: "website",
   },
   {
+    name: "Rainer Autoteile",
+    href: "https://rainer-autoteile.at",
+    preview: "/previews/rainer.jpg",
+    kind: "website",
+  },
+  {
     name: "informatically",
     href: "https://informatically.com",
     preview: "/previews/informatically.jpg",
