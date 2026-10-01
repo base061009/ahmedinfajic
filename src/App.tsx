@@ -89,10 +89,12 @@ function About({ t, onCv }: { t: Copy; onCv: () => void }) {
       <div className="about-sheet">
         <p>{t.about1}</p>
         <span className="about-rule" aria-hidden="true" />
-        <p>
-          {t.about2Before}
-          <button type="button" onClick={onCv}>{t.aboutCv}</button>.
-        </p>
+        <div className="about-col">
+          <p>{t.about2Before}</p>
+          <button className="about-cv" type="button" onClick={onCv}>
+            {t.aboutCv}
+          </button>
+        </div>
         <span className="about-rule" aria-hidden="true" />
         <p>{t.about3}</p>
       </div>
@@ -218,9 +220,14 @@ function Projects({ t }: { t: Copy }) {
 
 const cvEntries = [
   {
+    years: "2026–now",
+    place: "self",
+    note: "Software development",
+  },
+  {
     years: "2025–now",
     place: "Siemens",
-    note: "Software for managing the power grid",
+    note: "Contributing to Gridscale X",
   },
   {
     years: "2024",
@@ -692,7 +699,9 @@ function App() {
                 {cvEntries.map((entry, index) => (
                   <li key={entry.place}>
                     <span className="cv-years">{t.cvYears[index]}</span>
-                    <span className="cv-place">{entry.place}</span>
+                    <span className="cv-place">
+                      {entry.place === "self" ? t.selfEmployed : entry.place}
+                    </span>
                     <span className="cv-note">{t.cvNotes[index]}</span>
                   </li>
                 ))}

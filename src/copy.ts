@@ -31,8 +31,9 @@ export type Copy = {
   closingNote: string;
   cvLabel: string;
   close: string;
-  cvYears: [string, string, string, string];
-  cvNotes: [string, string, string, string];
+  cvYears: [string, string, string, string, string];
+  cvNotes: [string, string, string, string, string];
+  selfEmployed: string;
   study: string;
   studyText: string;
   school: string;
@@ -72,8 +73,8 @@ export const copy: Record<Lang, Copy> = {
     about1:
       "I am a software developer and have been working for over six years on solutions for various companies and people.",
     about2Before:
-      "Right now I work on Gridscale X at Siemens. Before that, among other things, I built software for Austria’s Ministry of Social Affairs at the Bundesrechenzentrum and contributed to several other projects. More about that can be found in ",
-    aboutCv: "my CV",
+      "Right now I work on Gridscale X at Siemens. Before that, among other things, I built software for Austria’s Ministry of Social Affairs at the Bundesrechenzentrum and contributed to several other projects.",
+    aboutCv: "View CV",
     about3:
       "In 2026 I founded my own company, with the intention of realizing my own ideas and accompanying other people on the path of digitalization.",
     swipe: "swipe",
@@ -113,13 +114,15 @@ export const copy: Record<Lang, Copy> = {
     closingNote: "I usually reply within a day or two.",
     cvLabel: "CV",
     close: "Close",
-    cvYears: ["2025–now", "2024", "2022–2024", "2020–2022"],
+    cvYears: ["2026–now", "2025–now", "2024", "2022–2024", "2020–2022"],
     cvNotes: [
-      "Software for controlling the power grid",
+      "Software development",
+      "Contributing to Gridscale X",
       "Software for Austria’s Ministry of Social Affairs",
       "Software for terms between companies",
       "Software around data collection",
     ],
+    selfEmployed: "Self-employed",
     study: "Study",
     studyText: "Bachelor of Science in Engineering, FH Campus Wien, 2019–2023",
     school: "School",
@@ -182,8 +185,8 @@ export const copy: Record<Lang, Copy> = {
     about1:
       "Ich bin Softwareentwickler und arbeite seit über sechs Jahren an Lösungen für verschiedene Firmen und Menschen.",
     about2Before:
-      "Zurzeit arbeite ich an Gridscale X bei Siemens. Davor habe ich unter anderem beim Bundesrechenzentrum Software für das österreichische Sozialministerium gebaut und an einigen anderen Projekten mitgewirkt. Mehr dazu findet man in meinem ",
-    aboutCv: "Lebenslauf",
+      "Zurzeit arbeite ich an Gridscale X bei Siemens. Davor habe ich unter anderem beim Bundesrechenzentrum Software für das österreichische Sozialministerium gebaut und an einigen anderen Projekten mitgewirkt.",
+    aboutCv: "Lebenslauf ansehen",
     about3:
       "Im Jahr 2026 habe ich meine eigene Firma gegründet, mit der Absicht, meine eigenen Ideen umzusetzen und andere Menschen auf dem Weg der Digitalisierung zu begleiten.",
     swipe: "wischen",
@@ -223,13 +226,15 @@ export const copy: Record<Lang, Copy> = {
     closingNote: "Ich antworte meist innerhalb von ein oder zwei Tagen.",
     cvLabel: "Lebenslauf",
     close: "Schließen",
-    cvYears: ["2025–heute", "2024", "2022–2024", "2020–2022"],
+    cvYears: ["2026–heute", "2025–heute", "2024", "2022–2024", "2020–2022"],
     cvNotes: [
-      "Software für die Steuerung des Stromnetzes",
+      "Softwareentwicklung",
+      "Mitarbeit an Gridscale X",
       "Software für das österreichische Sozialministerium",
       "Software für Konditionen zwischen Firmen",
       "Software rund um die Datenerfassung",
     ],
+    selfEmployed: "Selbstständig",
     study: "Studium",
     studyText: "Bachelor of Science in Engineering, FH Campus Wien, 2019–2023",
     school: "Schule",
@@ -292,8 +297,8 @@ export const copy: Record<Lang, Copy> = {
     about1:
       "Ja sam profesionalni programer sa više od šest godina iskustva sa radom za različite firme i ljude.",
     about2Before:
-      "Trenutno radim na projektu Gridscale X u Siemensu. Među ostalim projektima sam radio softver za austrijsko Ministarstvo socijalnih poslova u BRZ-u. Više informacija se nalazi u ",
-    aboutCv: "CV-u",
+      "Trenutno radim na projektu Gridscale X u Siemensu. Među ostalim projektima sam radio softver za austrijsko Ministarstvo socijalnih poslova u BRZ-u.",
+    aboutCv: "Pogledaj CV",
     about3:
       "2026. sam pokrenuo svoju firmu, s namjerom da ostvarim vlastite ideje i da pratim druge ljude na putu digitalizacije.",
     swipe: "prevuci",
@@ -333,13 +338,15 @@ export const copy: Record<Lang, Copy> = {
     closingNote: "Obično odgovorim u roku od jednog ili dva dana.",
     cvLabel: "CV",
     close: "Zatvori",
-    cvYears: ["2025–danas", "2024", "2022–2024", "2020–2022"],
+    cvYears: ["2026–danas", "2025–danas", "2024", "2022–2024", "2020–2022"],
     cvNotes: [
-      "Softver za upravljanje elektroenergetskom mrežom",
+      "Razvoj softvera",
+      "Rad na Gridscale X",
       "Softver za austrijsko Ministarstvo socijalnih poslova",
       "Softver za uslove između firmi",
       "Softver oko prikupljanja podataka",
     ],
+    selfEmployed: "Samostalno",
     study: "Studij",
     studyText: "Bachelor of Science in Engineering, FH Campus Wien, 2019–2023",
     school: "Škola",

@@ -508,7 +508,7 @@ ul {
   hyphens: auto;
 }
 
-.about-sheet p:first-of-type::first-letter {
+.about-sheet > p:first-of-type::first-letter {
   float: left;
   margin: 0.06em 0.08em 0 0;
   font-size: 3.35em;
@@ -516,20 +516,28 @@ ul {
   letter-spacing: -0.04em;
 }
 
-.about-sheet button {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
+.about-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.15em;
+}
+
+.about-cv {
+  padding: 0.62em 1.15em;
+  border: 1px solid #000;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(16px, 1.25vw, 18px);
+  letter-spacing: -0.02em;
   cursor: pointer;
 }
 
-.about-sheet button:hover {
-  color: rgba(0, 0, 0, 0.45);
+.about-cv:hover {
+  background: #3a3a3a;
+  border-color: #3a3a3a;
+  color: #fff;
 }
 
 .cv-card {
