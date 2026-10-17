@@ -517,7 +517,14 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = page === "home" ? "Ahmedin Fajic" : `${page === "impressum" ? t.imprint : t.privacy} — Ahmedin Fajic`;
+    document.title =
+      page === "home"
+        ? t.metaDescription
+        : `${page === "impressum" ? t.imprint : t.privacy} — Ahmedin Fajic`;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", t.metaDescription);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute("content", t.metaDescription);
   }, [lang, page, t]);
 
   useEffect(() => {
@@ -660,6 +667,7 @@ function App() {
       <section className="hero">
         <div className="hero-copy">
           <p>{t.hero}</p>
+          <p className="hero-sub">{t.heroSub}</p>
           <div className="hero-actions">
             <button className="hero-cta" type="button" onClick={showConnect}>
               {t.connect}

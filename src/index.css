@@ -283,6 +283,17 @@ ul {
   font-size: clamp(32px, 3.4vw, 52px);
   line-height: 1.08;
   letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.hero-copy .hero-sub {
+  max-width: 36em;
+  margin-top: 0.85em;
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: rgba(0, 0, 0, 0.62);
+  text-wrap: balance;
 }
 
 .hero-filter {

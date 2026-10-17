@@ -7,6 +7,8 @@ export type Copy = {
   openMenu: string;
   closeMenu: string;
   hero: string;
+  heroSub: string;
+  metaDescription: string;
   connect: string;
   servicesButton: string;
   aboutLabel: string;
@@ -66,7 +68,9 @@ export const copy: Record<Lang, Copy> = {
     menu: "Menu",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    hero: "I design and develop software for companies, for people with an idea, and for myself.",
+    hero: "Software that gets work done, wins customers and organizes data.",
+    heroSub: "Websites, internal tools and SaaS products, from idea to launch.",
+    metaDescription: "Ahmedin Fajic – Websites, internal tools and SaaS development",
     connect: "Connect",
     servicesButton: "Services",
     aboutLabel: "About",
@@ -111,7 +115,7 @@ export const copy: Record<Lang, Copy> = {
     ],
     projectTags: { saas: "SaaS", website: "Website" },
     closingLabel: "Connect",
-    closing: "Have a project in mind?",
+    closing: "Discuss your project now",
     closingNote: "I usually reply within a day or two.",
     cvLabel: "CV",
     close: "Close",
@@ -179,7 +183,10 @@ export const copy: Record<Lang, Copy> = {
     menu: "Menü",
     openMenu: "Menü öffnen",
     closeMenu: "Menü schließen",
-    hero: "Ich entwerfe und entwickle Software für Unternehmen, für Menschen mit einer Idee und für mich selbst.",
+    hero: "Software, die Arbeit erledigt, Kunden gewinnt und Daten ordnet.",
+    heroSub:
+      "Websites, Betriebssoftware und SaaS-Produkte, von der Idee bis zum Launch.",
+    metaDescription: "Ahmedin Fajic – Websites, Betriebssoftware und SaaS-Entwicklung",
     connect: "Kontakt",
     servicesButton: "Leistungen",
     aboutLabel: "Über mich",
@@ -208,7 +215,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         name: "SaaS Produkte",
-        text: "Für Menschen mit einer Vision. Ich helfe beim Entwerfen und Entwickeln deines SaaS Produkts, vom Start bis zu den ersten Kunden.",
+        text: "Für Menschen mit einer Vision. Ich helfe beim Entwerfen und Entwickeln Ihres SaaS-Produkts, vom Start bis zu den ersten Kunden.",
       },
     ],
     projectsLabel: "Eigene Projekte",
@@ -224,7 +231,7 @@ export const copy: Record<Lang, Copy> = {
     ],
     projectTags: { saas: "SaaS", website: "Website" },
     closingLabel: "Kontakt",
-    closing: "Hast du ein Projekt im Kopf?",
+    closing: "Jetzt Projekt besprechen",
     closingNote: "Ich antworte meist innerhalb von ein oder zwei Tagen.",
     cvLabel: "Lebenslauf",
     close: "Schließen",
@@ -290,9 +297,11 @@ export const copy: Record<Lang, Copy> = {
     nav: { about: "o meni", services: "usluge", projects: "projekti", connect: "kontakt" },
     language: "Jezik",
     menu: "Meni",
-    openMenu: "Otvori meni",
-    closeMenu: "Zatvori meni",
-    hero: "Dizajniram i razvijam softver za firme, za ljude s idejom i za sebe.",
+    openMenu: "Otvorite meni",
+    closeMenu: "Zatvorite meni",
+    hero: "Softver koji obavlja posao, privlači kupce i uređuje podatke.",
+    heroSub: "Web stranice, interni alati i SaaS proizvodi, od ideje do lansiranja.",
+    metaDescription: "Ahmedin Fajic – Web stranice, interni alati i SaaS razvoj",
     connect: "Kontakt",
     servicesButton: "Usluge",
     aboutLabel: "O meni",
@@ -300,10 +309,10 @@ export const copy: Record<Lang, Copy> = {
       "Ja sam profesionalni programer sa više od šest godina iskustva sa radom za različite firme i ljude.",
     about2Before:
       "Trenutno radim na projektu Gridscale X u Siemensu. Među ostalim projektima sam radio softver za austrijsko Ministarstvo socijalnih poslova u BRZ-u.",
-    aboutCv: "Pogledaj CV",
+    aboutCv: "Pogledajte CV",
     about3:
       "2026. sam pokrenuo svoju firmu, s namjerom da ostvarim vlastite ideje i da pratim druge ljude na putu digitalizacije.",
-    swipe: "prevuci",
+    swipe: "prevucite",
     of: "od",
     previous: "Nazad",
     next: "Dalje",
@@ -321,7 +330,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         name: "SaaS proizvodi",
-        text: "Za ljude s vizijom. Pomažem pri osmišljavanju i razvoju tvog SaaS proizvoda, od početka do prvih klijenata.",
+        text: "Za ljude s vizijom. Pomažem pri osmišljavanju i razvoju vašeg SaaS proizvoda, od početka do prvih klijenata.",
       },
     ],
     projectsLabel: "Projekti",
@@ -337,10 +346,10 @@ export const copy: Record<Lang, Copy> = {
     ],
     projectTags: { saas: "SaaS", website: "Web stranica" },
     closingLabel: "Kontakt",
-    closing: "Imaš projekat na umu?",
+    closing: "Razgovarajte o projektu odmah",
     closingNote: "Obično odgovorim u roku od jednog ili dva dana.",
     cvLabel: "CV",
-    close: "Zatvori",
+    close: "Zatvorite",
     cvYears: ["2026–danas", "2025–danas", "2024", "2022–2024", "2020–2022"],
     cvNotes: [
       "Razvoj softvera",
@@ -358,7 +367,7 @@ export const copy: Record<Lang, Copy> = {
     languagesText: "Njemački, bosanski, engleski",
     mail: "Mail",
     phone: "Telefon",
-    phoneScan: "Skeniraj za poziv",
+    phoneScan: "Skenirajte za poziv",
     imprint: "Impresum",
     privacy: "Privatnost",
     legalNav: "Pravno",
