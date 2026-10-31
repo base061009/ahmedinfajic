@@ -1,0 +1,59 @@
+---
+import { copy } from "../i18n/copy";
+import { pathFor, type Lang, type PageId } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+  page: PageId;
+}
+
+const { lang, page } = Astro.props;
+const t = copy[lang];
+const home = pathFor(lang, "home");
+const section = (id: string) => (page === "home" ? `#${id}` : `${home}#${id}`);
+const links = [
+  { href: section("leistungen"), label: t.nav.services },
+  { href: section("vorgehensweise"), label: t.nav.approach },
+  { href: section("ueber"), label: t.nav.about },
+];
+---
+
+<header class="site-header">
+  <a class="site-name" href={home}>Ahmedin Fajic</a>
+  <nav class="site-nav" aria-label={t.navLabel}>
+    <div class="site-nav-links">
+      {
+        links.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))
+      }
+      <button type="button" data-open="connect">{t.nav.contact}</button>
+    </div>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label={t.menu}
+      data-label-open={t.menu}
+      data-label-close={t.closeMenu}
+    >
+      <span class="menu-toggle-stage" aria-hidden="true">
+        <span class="menu-toggle-word is-in">{t.menu}</span>
+        <span class="menu-toggle-mark is-out">×</span>
+      </span>
+    </button>
+    <button class="lang-switch" type="button" aria-haspopup="dialog" data-open="language">
+      <span class="sr-only">{t.language}</span>
+      <span aria-hidden="true">A文</span>
+    </button>
+  </nav>
+  <div class="menu-panel" id="mobile-menu" hidden>
+    {
+      links.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))
+    }
+    <button type="button" data-open="connect">{t.nav.contact}</button>
+  </div>
+</header>

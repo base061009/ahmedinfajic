@@ -1,0 +1,54 @@
+---
+import Base from "../../layouts/Base.astro";
+import { copy } from "../../i18n/copy";
+import { email, emailHref, isLang, langs } from "../../i18n/site";
+
+export function getStaticPaths() {
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang;
+if (!isLang(lang)) {
+  throw new Error("Unknown language");
+}
+
+const t = copy[lang];
+---
+
+<Base
+  lang={lang}
+  page="datenschutz"
+  title={t.meta.datenschutz.title}
+  description={t.meta.datenschutz.description}
+>
+  <section class="section legal">
+    <div class="wrap">
+      <div class="measure">
+        <h1>{t.privacy}</h1>
+        {
+          t.privacySections.map((section) => (
+            <div class="privacy-block">
+              <h2>{section.title}</h2>
+              <p>
+                {section.body}
+                {section.appendEmail && (
+                  <>
+                    {" "}
+                    {t.imp.email}: <a href={emailHref}>{email}</a>
+                  </>
+                )}
+                {section.link && (
+                  <a href={section.link.href} target="_blank" rel="noopener noreferrer">
+                    {section.link.label}
+                    <span class="sr-only"> ({t.newTab})</span>
+                  </a>
+                )}
+                {section.after}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

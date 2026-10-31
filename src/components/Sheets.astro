@@ -1,0 +1,133 @@
+---
+import ContactCard from "./ContactCard.astro";
+import { copy } from "../i18n/copy";
+import { pathFor, type Lang, type PageId } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+  page: PageId;
+}
+
+const { lang, page } = Astro.props;
+const t = copy[lang];
+const languages = [
+  { code: "de" as const, label: "Deutsch" },
+  { code: "en" as const, label: "English" },
+  { code: "bs" as const, label: "Bosanski" },
+];
+---
+
+<div class="sheet" id="language-sheet" hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-label={t.language} tabindex="-1">
+    {
+      languages.map((item) => (
+        <a
+          class="sheet-link"
+          href={pathFor(item.code, page)}
+          hreflang={item.code}
+          lang={item.code}
+          aria-current={item.code === lang ? "page" : undefined}
+        >
+          <span class="sheet-icon lang-mark">{item.code}</span>
+          <span>{item.label}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<div class="sheet" id="connect-sheet" hidden>
+  <div class="sheet-card connect-card" role="dialog" aria-modal="true" aria-label={t.nav.contact} tabindex="-1">
+    <ContactCard lang={lang} />
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector(".menu-toggle");
+  const panel = document.querySelector(".menu-panel");
+  const languageSheet = document.getElementById("language-sheet");
+  const connectSheet = document.getElementById("connect-sheet");
+  let returnFocus: HTMLElement | null = null;
+
+  function menuOpen() {
+    return panel instanceof HTMLElement && !panel.hidden;
+  }
+
+  function sheetOpen() {
+    return (
+      (languageSheet instanceof HTMLElement && !languageSheet.hidden) ||
+      (connectSheet instanceof HTMLElement && !connectSheet.hidden)
+    );
+  }
+
+  function lockPage() {
+    document.body.style.overflow = menuOpen() || sheetOpen() ? "hidden" : "";
+  }
+
+  function setMenu(open: boolean) {
+    if (!(panel instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return;
+    panel.hidden = !open;
+    panel.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? toggle.dataset.labelClose ?? "" : toggle.dataset.labelOpen ?? "");
+    const word = toggle.querySelector(".menu-toggle-word");
+    const mark = toggle.querySelector(".menu-toggle-mark");
+    word?.classList.toggle("is-in", !open);
+    word?.classList.toggle("is-out", open);
+    mark?.classList.toggle("is-in", open);
+    mark?.classList.toggle("is-out", !open);
+    lockPage();
+  }
+
+  function openSheet(sheet: HTMLElement, trigger: HTMLElement) {
+    setMenu(false);
+    if (languageSheet instanceof HTMLElement) languageSheet.hidden = true;
+    if (connectSheet instanceof HTMLElement) connectSheet.hidden = true;
+    returnFocus = trigger;
+    sheet.hidden = false;
+    lockPage();
+    const dialog = sheet.querySelector("[role='dialog']");
+    if (dialog instanceof HTMLElement) dialog.focus();
+  }
+
+  function closeSheets() {
+    if (languageSheet instanceof HTMLElement) languageSheet.hidden = true;
+    if (connectSheet instanceof HTMLElement) connectSheet.hidden = true;
+    lockPage();
+    returnFocus?.focus();
+    returnFocus = null;
+  }
+
+  toggle?.addEventListener("click", () => {
+    setMenu(!menuOpen());
+  });
+
+  panel?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  document.querySelectorAll("[data-open]").forEach((control) => {
+    control.addEventListener("click", () => {
+      if (!(control instanceof HTMLElement)) return;
+      const name = control.dataset.open;
+      const sheet = name === "language" ? languageSheet : connectSheet;
+      if (sheet instanceof HTMLElement) openSheet(sheet, control);
+    });
+  });
+
+  document.querySelectorAll(".sheet").forEach((sheet) => {
+    sheet.addEventListener("click", (event) => {
+      if (event.target === sheet) closeSheets();
+    });
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (sheetOpen()) closeSheets();
+    else if (menuOpen()) setMenu(false);
+  });
+
+  window.matchMedia("(min-width: 801px)").addEventListener("change", (event) => {
+    if (event.matches) setMenu(false);
+  });
+</script>

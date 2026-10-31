@@ -1,0 +1,24 @@
+---
+import { copy } from "../i18n/copy";
+import { pathFor, type Lang } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-bar">
+    <p>© {year} Ahmedin Fajic</p>
+    <nav aria-label={t.legalNav}>
+      <ul>
+        <li><a href={pathFor(lang, "impressum")}>{t.imprint}</a></li>
+        <li><a href={pathFor(lang, "datenschutz")}>{t.privacy}</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>

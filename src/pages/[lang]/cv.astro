@@ -1,0 +1,62 @@
+---
+import Base from "../../layouts/Base.astro";
+import { copy } from "../../i18n/copy";
+import { isLang, langs } from "../../i18n/site";
+
+export function getStaticPaths() {
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang;
+if (!isLang(lang)) {
+  throw new Error("Unknown language");
+}
+
+const t = copy[lang];
+---
+
+<Base lang={lang} page="cv" title={t.meta.cv.title} description={t.meta.cv.description}>
+  <section class="section">
+    <div class="wrap">
+      <div class="cv">
+        <p class="eyebrow">{t.cv.eyebrow}</p>
+        <h1>Ahmedin Fajic</h1>
+        <img
+          class="cv-photo"
+          src="/portrait.png"
+          width="1280"
+          height="720"
+          alt={t.cv.portraitAlt}
+          decoding="async"
+        />
+        <h2>{t.cv.experience}</h2>
+        <ol class="cv-list">
+          {
+            t.cv.entries.map((entry) => (
+              <li>
+                <p class="cv-years">{entry.years}</p>
+                <div>
+                  <h3>{entry.place}</h3>
+                  <p>{entry.note}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <h2>{t.cv.education}</h2>
+        <dl class="facts">
+          {
+            t.cv.facts.map((fact) => (
+              <div>
+                <dt>{fact.label}</dt>
+                <dd>{fact.text}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <h2>{t.cv.languagesTitle}</h2>
+        <p>{t.cv.languagesText}</p>
+      </div>
+    </div>
+  </section>
+</Base>

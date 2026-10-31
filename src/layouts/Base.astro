@@ -1,0 +1,82 @@
+---
+import "@fontsource/cardo/latin-400.css";
+import "@fontsource/cardo/latin-ext-400.css";
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Sheets from "../components/Sheets.astro";
+import { copy } from "../i18n/copy";
+import { jsonLd } from "../i18n/schema";
+import { absoluteUrl, langs, ogLocales, site, type Lang, type PageId } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+  page: PageId;
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { lang, page, title, description, noindex = false } = Astro.props;
+const t = copy[lang];
+const canonical = absoluteUrl(lang, page);
+const image = `${site}/og.jpg`;
+const json = jsonLd(lang);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="theme-color" content="#fffefc" />
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <>
+          <link rel="canonical" href={canonical} />
+          {langs.map((code) => (
+            <link rel="alternate" hreflang={code} href={absoluteUrl(code, page)} />
+          ))}
+          <link rel="alternate" hreflang="x-default" href={absoluteUrl("de", page)} />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="Ahmedin Fajic" />
+          <meta property="og:locale" content={ogLocales[lang]} />
+          {langs
+            .filter((code) => code !== lang)
+            .map((code) => (
+              <meta property="og:locale:alternate" content={ogLocales[code]} />
+            ))}
+          <meta property="og:url" content={canonical} />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content={image} />
+          <meta property="og:image:secure_url" content={image} />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content={t.ogAlt} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <meta name="twitter:image" content={image} />
+          <meta name="twitter:image:alt" content={t.ogAlt} />
+          <script type="application/ld+json" is:inline set:html={json} />
+        </>
+      )
+    }
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">{t.skip}</a>
+    <Header lang={lang} page={page} />
+    <main id="inhalt" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <Sheets lang={lang} page={page} />
+  </body>
+</html>

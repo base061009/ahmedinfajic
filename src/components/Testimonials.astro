@@ -1,0 +1,81 @@
+---
+/**
+ * Vorbereitet, noch nicht eingebunden.
+ * Nur echte Stimmen eintragen und in der Startseite aktivieren.
+ *
+ * Einbindung in src/pages/[lang]/index.astro:
+ *   import Testimonials from "../../components/Testimonials.astro";
+ *   <Testimonials lang={lang} />
+ */
+import type { Lang } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+
+interface Item {
+  quote: string;
+  name: string;
+  org: string;
+}
+
+const { lang } = Astro.props;
+
+const title = {
+  de: "Referenzen",
+  en: "References",
+  bs: "Reference",
+}[lang];
+
+const items: Item[] = [
+  // { quote: "", name: "", org: "" },
+];
+---
+
+{
+  items.length > 0 && (
+    <section class="section" id="referenzen" aria-labelledby="referenzen-title">
+      <div class="wrap">
+        <h2 id="referenzen-title">{title}</h2>
+        <ul class="quotes">
+          {items.map((item) => (
+            <li>
+              <figure>
+                <blockquote>
+                  <p>{item.quote}</p>
+                </blockquote>
+                <figcaption>
+                  {item.name}, {item.org}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .quotes {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+  }
+
+  figure {
+    margin: 0;
+    padding: 1.4rem 1.35rem;
+    border: 1px solid var(--line);
+  }
+
+  blockquote p {
+    font-size: 1.125rem;
+  }
+
+  figcaption {
+    margin-top: 0.9rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+</style>
