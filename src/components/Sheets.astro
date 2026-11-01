@@ -42,11 +42,61 @@ const languages = [
   </div>
 </div>
 
+<div class="sheet" id="cv-sheet" hidden>
+  <div class="sheet-card cv-card" role="dialog" aria-modal="true" aria-label={t.cv.eyebrow} tabindex="-1">
+    <button class="cv-close" type="button" data-close-sheet>{t.closeMenu}</button>
+    <picture>
+      <source srcset="/portrait.avif" type="image/avif" />
+      <source srcset="/portrait.webp" type="image/webp" />
+      <img
+        class="cv-photo"
+        src="/portrait.png"
+        width="1280"
+        height="720"
+        alt={t.cv.portraitAlt}
+        decoding="async"
+      />
+    </picture>
+    <div class="cv-body">
+      <p class="cv-name">Ahmedin Fajic</p>
+      <ol class="cv-line">
+        {
+          t.cv.entries.map((entry) => (
+            <li>
+              <span class="cv-years">{entry.years}</span>
+              <span class="cv-place">{entry.place}</span>
+              <span class="cv-note">{entry.note}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="cv-foot">
+        {
+          t.cv.facts.map((fact) => (
+            <p>
+              <span>{fact.label}</span>
+              {fact.text}
+              {fact.years && <> {fact.years}</>}
+            </p>
+          ))
+        }
+        <p>
+          <span>{t.cv.languagesTitle}</span>
+          {t.cv.languagesText}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   const toggle = document.querySelector(".menu-toggle");
   const panel = document.querySelector(".menu-panel");
-  const languageSheet = document.getElementById("language-sheet");
-  const connectSheet = document.getElementById("connect-sheet");
+  const sheets = {
+    language: document.getElementById("language-sheet"),
+    connect: document.getElementById("connect-sheet"),
+    cv: document.getElementById("cv-sheet"),
+  };
   let returnFocus: HTMLElement | null = null;
 
   function menuOpen() {
@@ -54,14 +104,17 @@ const languages = [
   }
 
   function sheetOpen() {
-    return (
-      (languageSheet instanceof HTMLElement && !languageSheet.hidden) ||
-      (connectSheet instanceof HTMLElement && !connectSheet.hidden)
-    );
+    return Object.values(sheets).some((sheet) => sheet instanceof HTMLElement && !sheet.hidden);
   }
 
   function lockPage() {
     document.body.style.overflow = menuOpen() || sheetOpen() ? "hidden" : "";
+  }
+
+  function hideSheets() {
+    for (const sheet of Object.values(sheets)) {
+      if (sheet instanceof HTMLElement) sheet.hidden = true;
+    }
   }
 
   function setMenu(open: boolean) {
@@ -81,8 +134,7 @@ const languages = [
 
   function openSheet(sheet: HTMLElement, trigger: HTMLElement) {
     setMenu(false);
-    if (languageSheet instanceof HTMLElement) languageSheet.hidden = true;
-    if (connectSheet instanceof HTMLElement) connectSheet.hidden = true;
+    hideSheets();
     returnFocus = trigger;
     sheet.hidden = false;
     lockPage();
@@ -91,8 +143,7 @@ const languages = [
   }
 
   function closeSheets() {
-    if (languageSheet instanceof HTMLElement) languageSheet.hidden = true;
-    if (connectSheet instanceof HTMLElement) connectSheet.hidden = true;
+    hideSheets();
     lockPage();
     returnFocus?.focus();
     returnFocus = null;
@@ -110,9 +161,13 @@ const languages = [
     control.addEventListener("click", () => {
       if (!(control instanceof HTMLElement)) return;
       const name = control.dataset.open;
-      const sheet = name === "language" ? languageSheet : connectSheet;
+      const sheet = name ? sheets[name as keyof typeof sheets] : undefined;
       if (sheet instanceof HTMLElement) openSheet(sheet, control);
     });
+  });
+
+  document.querySelectorAll("[data-close-sheet]").forEach((control) => {
+    control.addEventListener("click", () => closeSheets());
   });
 
   document.querySelectorAll(".sheet").forEach((sheet) => {

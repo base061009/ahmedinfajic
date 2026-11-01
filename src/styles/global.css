@@ -296,13 +296,53 @@ main:focus {
   color: #000;
 }
 
-.trust-line {
-  max-width: 36em;
+.trust {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 26px);
+  max-width: 36rem;
   margin-top: clamp(36px, 6vh, 64px);
-  font-size: clamp(16px, 1.15vw, 18px);
-  line-height: 1.4;
-  letter-spacing: -0.015em;
+  text-align: left;
+}
+
+.trust-stat {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.trust-years {
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.trust-years-label {
+  max-width: 6.2em;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: rgba(0, 0, 0, 0.62);
+}
+
+.trust-rule {
+  align-self: stretch;
+  flex: none;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.trust-copy {
+  max-width: 15em;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.trust-name {
+  color: #000;
 }
 
 .section {
@@ -316,7 +356,7 @@ main:focus {
   align-items: center;
   gap: 1.25rem;
   margin-bottom: clamp(28px, 4vh, 48px);
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: clamp(20px, 1.8vw, 24px);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.02em;
@@ -361,6 +401,7 @@ main:focus {
   object-position: 50% 30%;
 }
 
+.measure > p::first-letter,
 #ueber .about-intro > p::first-letter {
   float: left;
   margin: 0.06em 0.08em 0 0;
@@ -373,7 +414,6 @@ main:focus {
   display: grid;
   grid-template-columns: minmax(10rem, 22rem) minmax(0, 1fr);
   column-gap: clamp(32px, 5vw, 80px);
-  border-top: 1px solid rgba(0, 0, 0, 0.28);
 }
 
 .card {
@@ -385,6 +425,10 @@ main:focus {
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 }
 
+.card:last-child,
+.steps li:last-child {
+  border-bottom: none;
+}
 .card h3,
 .steps h3 {
   font-size: clamp(28px, 2.6vw, 40px);
@@ -404,7 +448,6 @@ main:focus {
   display: grid;
   grid-template-columns: auto minmax(7rem, 14rem) minmax(0, 1fr);
   column-gap: clamp(24px, 4vw, 64px);
-  border-top: 1px solid rgba(0, 0, 0, 0.28);
 }
 
 .steps li {
@@ -442,11 +485,12 @@ main:focus {
 }
 
 .closing h2 {
-  max-width: 16em;
-  font-size: clamp(28px, 3.4vw, 48px);
+  max-width: none;
+  font-size: clamp(15px, 3.15vw, 48px);
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -0.03em;
+  white-space: nowrap;
 }
 
 .closing .button {
@@ -508,6 +552,105 @@ main:focus {
   gap: 0;
   min-width: min(420px, calc(100vw - 48px));
   padding: 26px 28px 22px;
+}
+
+.sheet-card.cv-card {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: min(560px, calc(100vw - 48px));
+  max-height: min(82vh, 720px);
+  padding: 0;
+  overflow: hidden;
+}
+
+.cv-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 8px 12px;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cv-close:hover {
+  opacity: 0.45;
+}
+
+.cv-card .cv-photo {
+  display: block;
+  width: 100%;
+  height: 240px;
+  margin: 0;
+  object-fit: cover;
+  object-position: 72% 22%;
+}
+
+.cv-body {
+  overflow: auto;
+  padding: 18px 32px 26px;
+}
+
+.cv-name {
+  margin: 0.2em 0 0;
+  font-size: clamp(32px, 4vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.cv-line {
+  margin: 22px 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.cv-line li {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  gap: 0.15em 1.2em;
+  padding: 0.9em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.cv-line .cv-years {
+  grid-row: 1 / span 2;
+  align-self: start;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.cv-place {
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.cv-note {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.cv-foot {
+  display: grid;
+  gap: 0.7em;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.cv-foot p {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.cv-foot span {
+  display: block;
+  margin-bottom: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .sheet-actions {
@@ -650,7 +793,7 @@ main:focus {
   display: block;
   margin-top: 1.6rem;
   margin-bottom: 0;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
@@ -848,7 +991,7 @@ main:focus {
   }
 
   .closing h2 {
-    font-size: clamp(22px, 6.4vw, 28px);
+    font-size: clamp(15px, 4.5vw, 28px);
   }
 
   .sheet-card.connect-card {
@@ -902,7 +1045,8 @@ main:focus {
     gap: 0.7rem;
   }
 
-  .cv-list li {
+  .cv-list li,
+  .cv-line li {
     grid-template-columns: 5.4em minmax(0, 1fr);
   }
 }

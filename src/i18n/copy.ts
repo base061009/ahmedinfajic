@@ -24,8 +24,12 @@ export type Copy = {
   privacy: string;
   nav: { services: string; approach: string; about: string; contact: string };
   hero: { eyebrow: string; title: string; sub: string; primary: string; secondary: string };
-  trustLabel: string;
-  trust: string;
+  trustYears: string;
+  trustYearsLabel: string;
+  trustBefore: string;
+  trustNameA: string;
+  trustMid: string;
+  trustNameB: string;
   servicesTitle: string;
   services: { title: string; text: string }[];
   situationTitle: string;
@@ -87,7 +91,7 @@ export const copy = {
       cv: {
         title: "Lebenslauf | Ahmedin Fajic",
         description:
-          "Lebenslauf von Ahmedin Fajic. Softwareentwicklung, unter anderem bei Siemens, beim Bundesrechenzentrum und für das österreichische Sozialministerium.",
+          "Lebenslauf von Ahmedin Fajic. Softwareentwicklung, unter anderem bei Siemens und beim Bundesrechenzentrum.",
       },
       impressum: {
         title: "Impressum | Ahmedin Fajic",
@@ -126,9 +130,12 @@ export const copy = {
       primary: "Erstgespräch vereinbaren",
       secondary: "Leistungen ansehen",
     },
-    trustLabel: "Erfahrung",
-    trust:
-      "Erfahrung aus Projekten für Siemens · Bundesrechenzentrum · Österreichisches Sozialministerium",
+    trustYears: "6+",
+    trustYearsLabel: "Jahre Erfahrung",
+    trustBefore: "Erfahrung bei Projekten für ",
+    trustNameA: "Siemens",
+    trustMid: " und das ",
+    trustNameB: "Bundesrechenzentrum",
     servicesTitle: "Leistungen",
     services: [
       {
@@ -168,7 +175,7 @@ export const copy = {
     ],
     aboutTitle: "Über das Unternehmen",
     about:
-      "Gegründet 2026 von Ahmedin Fajic, Softwareentwickler mit über sechs Jahren Erfahrung in Großprojekten, unter anderem bei Siemens und für das österreichische Sozialministerium. Jedes Projekt wird direkt vom Entwickler betreut, ohne Umwege über Vertrieb oder Projektmanagement.",
+      "Gegründet 2026 von Ahmedin Fajic, Softwareentwickler mit über sechs Jahren Erfahrung in Großprojekten, unter anderem bei Siemens und beim Bundesrechenzentrum. Jedes Projekt wird direkt vom Entwickler betreut, ohne Umwege über Vertrieb oder Projektmanagement.",
     aboutCv: "Lebenslauf ansehen",
     aboutPortraitAlt: "Ahmedin Fajic",
     contactTitle: "Unverbindliches Erstgespräch vereinbaren",
@@ -186,22 +193,26 @@ export const copy = {
       languagesText: "Deutsch, Bosnisch, Englisch",
       portraitAlt: "Schwarzweißes Porträt von Ahmedin Fajic",
       entries: [
-        { years: "2026–heute", place: "Selbstständig", note: "Softwareentwicklung" },
-        { years: "2025–heute", place: "Siemens", note: "Mitarbeit an Gridscale X" },
+        { years: "2026–heute", place: "Selbstständig", note: "Softwareentwicklung für Unternehmen und Organisationen." },
+        {
+          years: "2025–heute",
+          place: "Siemens",
+          note: "Entwicklung modularer Software für Gridscale X, Teil der Siemens-Xcelerator-Plattform für autonomes Netzmanagement.",
+        },
         {
           years: "2024",
           place: "Bundesrechenzentrum",
-          note: "Software für das österreichische Sozialministerium",
+          note: "Projektbasierte Weiterentwicklung einer Verwaltungssoftware für das österreichische Sozialministerium.",
         },
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Software zur Verwaltung von Lieferanten- und Kundenkonditionen",
+          note: "Entwicklung von ERP- und CRM-Systemen für das Konditionsmanagement.",
         },
         {
           years: "2020–2022",
           place: "Focus Market Research",
-          note: "Software rund um die Datenerfassung",
+          note: "Entwicklung von Software zur Datenerfassung und Umbau einer monolithischen Anwendung in mehrere Microservices.",
         },
       ],
       facts: [
@@ -269,7 +280,7 @@ export const copy = {
       cv: {
         title: "CV | Ahmedin Fajic",
         description:
-          "CV of Ahmedin Fajic. Software development, including work at Siemens, at the Bundesrechenzentrum and for the Austrian Ministry of Social Affairs.",
+          "CV of Ahmedin Fajic. Software development, including work at Siemens and at the Bundesrechenzentrum.",
       },
       impressum: {
         title: "Imprint | Ahmedin Fajic",
@@ -308,9 +319,12 @@ export const copy = {
       primary: "Book a free initial consultation",
       secondary: "View services",
     },
-    trustLabel: "Experience",
-    trust:
-      "Experience from projects for Siemens · Bundesrechenzentrum · Austrian Ministry of Social Affairs",
+    trustYears: "6+",
+    trustYearsLabel: "Years of experience",
+    trustBefore: "Experience on projects for ",
+    trustNameA: "Siemens",
+    trustMid: " and the ",
+    trustNameB: "Bundesrechenzentrum",
     servicesTitle: "Services",
     services: [
       {
@@ -350,7 +364,7 @@ export const copy = {
     ],
     aboutTitle: "About the company",
     about:
-      "Founded in 2026 by Ahmedin Fajic, a software developer with more than six years of experience on large projects, including at Siemens and for the Austrian Ministry of Social Affairs. Each project is handled directly by the developer, without detours through sales or project management.",
+      "Founded in 2026 by Ahmedin Fajic, a software developer with more than six years of experience on large projects, including at Siemens and at the Bundesrechenzentrum. Each project is handled directly by the developer, without detours through sales or project management.",
     aboutCv: "View CV",
     aboutPortraitAlt: "Ahmedin Fajic",
     contactTitle: "Book a free initial consultation",
@@ -367,22 +381,26 @@ export const copy = {
       languagesText: "German, Bosnian, English",
       portraitAlt: "Black-and-white portrait of Ahmedin Fajic",
       entries: [
-        { years: "2026–present", place: "Self-employed", note: "Software development" },
-        { years: "2025–present", place: "Siemens", note: "Contributing to Gridscale X" },
+        { years: "2026–present", place: "Self-employed", note: "Software development for businesses and organisations." },
+        {
+          years: "2025–present",
+          place: "Siemens",
+          note: "Development of modular software for Gridscale X, part of the Siemens Xcelerator platform for autonomous grid management.",
+        },
         {
           years: "2024",
           place: "Bundesrechenzentrum",
-          note: "Software for the Austrian Ministry of Social Affairs",
+          note: "Project-based further development of administrative software for the Austrian Ministry of Social Affairs.",
         },
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Software for managing B2B pricing terms",
+          note: "Development of ERP and CRM systems for managing commercial terms.",
         },
         {
           years: "2020–2022",
           place: "Focus Market Research",
-          note: "Software around data collection",
+          note: "Development of data-collection software, and the split of a monolithic application into several microservices.",
         },
       ],
       facts: [
@@ -449,7 +467,7 @@ export const copy = {
       cv: {
         title: "Životopis | Ahmedin Fajić",
         description:
-          "Životopis Ahmedina Fajića. Razvoj softvera, između ostalog u Siemensu, u Bundesrechenzentrumu i za austrijsko Ministarstvo socijalnih poslova.",
+          "Životopis Ahmedina Fajića. Razvoj softvera, između ostalog u Siemensu i u Bundesrechenzentrumu.",
       },
       impressum: {
         title: "Impresum | Ahmedin Fajić",
@@ -488,9 +506,12 @@ export const copy = {
       primary: "Dogovorite prvi razgovor",
       secondary: "Pogledajte usluge",
     },
-    trustLabel: "Iskustvo",
-    trust:
-      "Iskustvo iz projekata za Siemens · Bundesrechenzentrum · Austrijsko ministarstvo socijalnih poslova",
+    trustYears: "6+",
+    trustYearsLabel: "Godina iskustva",
+    trustBefore: "Iskustvo na projektima za ",
+    trustNameA: "Siemens",
+    trustMid: " i ",
+    trustNameB: "Bundesrechenzentrum",
     servicesTitle: "Usluge",
     services: [
       {
@@ -530,7 +551,7 @@ export const copy = {
     ],
     aboutTitle: "O preduzeću",
     about:
-      "Preduzeće je 2026. godine osnovao Ahmedin Fajić, softverski inženjer s više od šest godina iskustva na velikim projektima, između ostalog u Siemensu i za austrijsko Ministarstvo socijalnih poslova. Svaki projekat vodi direktno razvojni inženjer, bez posredovanja prodaje ili upravljanja projektima.",
+      "Preduzeće je 2026. godine osnovao Ahmedin Fajić, softverski inženjer s više od šest godina iskustva na velikim projektima, između ostalog u Siemensu i u Bundesrechenzentrumu. Svaki projekat vodi direktno razvojni inženjer, bez posredovanja prodaje ili upravljanja projektima.",
     aboutCv: "Pogledajte životopis",
     aboutPortraitAlt: "Ahmedin Fajić",
     contactTitle: "Zakažite besplatan uvodni razgovor",
@@ -548,22 +569,26 @@ export const copy = {
       languagesText: "Njemački, bosanski, engleski",
       portraitAlt: "Crno-bijeli portret Ahmedina Fajića",
       entries: [
-        { years: "2026–danas", place: "Samostalno", note: "Razvoj softvera" },
-        { years: "2025–danas", place: "Siemens", note: "Rad na Gridscale X" },
+        { years: "2026–danas", place: "Samostalno", note: "Razvoj softvera za preduzeća i organizacije." },
+        {
+          years: "2025–danas",
+          place: "Siemens",
+          note: "Razvoj modularnog softvera za Gridscale X, dio platforme Siemens Xcelerator za autonomno upravljanje mrežom.",
+        },
         {
           years: "2024",
           place: "Bundesrechenzentrum",
-          note: "Softver za austrijsko Ministarstvo socijalnih poslova",
+          note: "Projektni dalji razvoj administrativnog softvera za austrijsko Ministarstvo socijalnih poslova.",
         },
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Softver za upravljanje uslovima dobavljača i kupaca",
+          note: "Razvoj ERP i CRM sistema za upravljanje uslovima.",
         },
         {
           years: "2020–2022",
           place: "Focus Market Research",
-          note: "Softver oko prikupljanja podataka",
+          note: "Razvoj softvera za prikupljanje podataka i podjela monolitne aplikacije na više mikroservisa.",
         },
       ],
       facts: [
