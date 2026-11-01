@@ -25,6 +25,17 @@ export function jsonLd(lang: Lang): string {
         },
         founder: { "@id": `${site}/#ahmedin-fajic` },
         description: copy[lang].meta.home.description,
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: copy[lang].servicesTitle,
+          itemListElement: copy[lang].services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.title,
+            },
+          })),
+        },
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",

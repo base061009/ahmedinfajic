@@ -62,25 +62,6 @@ const t = copy[lang];
     </div>
   </section>
 
-  <section class="section" id="vorgehensweise">
-    <div class="wrap">
-      <h2>{t.approachTitle}</h2>
-      <ol class="steps">
-        {
-          t.steps.map((step, index) => (
-            <li>
-              <span class="step-index" aria-hidden="true">
-                {index + 1}
-              </span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
   <section class="section" id="ueber">
     <div class="wrap">
       <div class="measure">

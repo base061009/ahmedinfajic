@@ -13,7 +13,6 @@ const home = pathFor(lang, "home");
 const section = (id: string) => (page === "home" ? `#${id}` : `${home}#${id}`);
 const links = [
   { href: section("leistungen"), label: t.nav.services },
-  { href: section("vorgehensweise"), label: t.nav.approach },
   { href: section("ueber"), label: t.nav.about },
 ];
 ---

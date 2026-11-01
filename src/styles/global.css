@@ -453,44 +453,20 @@ main:focus {
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 }
 
-.card:last-child,
-.steps li:last-child {
+.card:last-child {
   border-bottom: none;
 }
-.card h3,
-.steps h3 {
+.card h3 {
   font-size: clamp(28px, 2.6vw, 40px);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
 
-.card p,
-.steps p {
+.card p {
   font-size: clamp(17px, 1.5vw, 22px);
   line-height: 1.4;
   letter-spacing: -0.015em;
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: auto minmax(7rem, 14rem) minmax(0, 1fr);
-  column-gap: clamp(24px, 4vw, 64px);
-}
-
-.steps li {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1 / -1;
-  align-items: baseline;
-  padding: clamp(22px, 3.2vh, 36px) 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
-}
-
-.step-index {
-  font-size: clamp(16px, 1.2vw, 18px);
-  letter-spacing: 0.04em;
-  color: rgba(0, 0, 0, 0.45);
 }
 
 .inline-links {
@@ -1053,13 +1029,11 @@ main:focus {
     padding-bottom: 72px;
   }
 
-  .cards,
-  .steps {
+  .cards {
     grid-template-columns: 1fr;
   }
 
-  .card,
-  .steps li {
+  .card {
     grid-template-columns: 1fr;
     row-gap: 0.35rem;
   }

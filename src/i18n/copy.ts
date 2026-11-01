@@ -23,7 +23,7 @@ export type Copy = {
   legalNav: string;
   imprint: string;
   privacy: string;
-  nav: { services: string; approach: string; about: string; contact: string };
+  nav: { services: string; about: string; contact: string };
   hero: { eyebrow: string; title: string; sub: string; primary: string; secondary: string };
   trustYears: string;
   trustYearsLabel: string;
@@ -35,8 +35,6 @@ export type Copy = {
   services: { title: string; text: string }[];
   situationTitle: string;
   situation: string;
-  approachTitle: string;
-  steps: { title: string; text: string }[];
   aboutTitle: string;
   about: string;
   aboutCv: string;
@@ -87,7 +85,7 @@ export const copy = {
       home: {
         title: "Software-Entwicklung für Unternehmen | Ahmedin Fajic",
         description:
-          "Individuelle Software für Unternehmen und Organisationen: Verwaltung, Kundenportale und Websites. Mit Erfahrung aus Projekten für Siemens und den öffentlichen Sektor.",
+          "Digitalisierung von Arbeitsabläufen, Webdesign und Entwicklung auf Stundenbasis für Unternehmen und Organisationen. Mit Erfahrung aus Projekten für Siemens und den öffentlichen Sektor.",
       },
       cv: {
         title: "Lebenslauf | Ahmedin Fajic",
@@ -120,7 +118,6 @@ export const copy = {
     privacy: "Datenschutz",
     nav: {
       services: "leistungen",
-      approach: "vorgehensweise",
       about: "über",
       contact: "kontakt",
     },
@@ -140,43 +137,24 @@ export const copy = {
     servicesTitle: "Leistungen",
     services: [
       {
-        title: "Verwaltungssoftware",
-        text: "Zentrale Systeme für Aufträge, Kunden, Mitarbeiter und Dokumente, als Ersatz für verstreute Excel-Listen und Ablagen.",
+        title: "Digitalisierung von Arbeitsabläufen",
+        text: "Abläufe, die heute über Excel-Listen, Papierformulare und E-Mails laufen, werden in einer durchgängigen Anwendung zusammengeführt, abgestimmt auf Ihre Arbeitsweise.",
       },
       {
-        title: "Kunden- und Partnerportale",
-        text: "Sicherer Austausch von Unterlagen, Anfragen und Belegen, ohne E-Mail-Verkehr und Medienbrüche.",
+        title: "Webdesign",
+        text: "Klare, schnelle Websites, die Vertrauen schaffen und auf jedem Gerät funktionieren. Auf Wunsch landen Anfragen und Buchungen direkt in Ihren bestehenden Systemen.",
       },
       {
-        title: "Websites mit Systemanbindung",
-        text: "Anfragen, Buchungen und Termine fließen direkt in die bestehende Verwaltung.",
+        title: "Entwicklung auf Stundenbasis",
+        text: "Zusätzliche Entwicklerkapazität für Agenturen und Unternehmen, abgerechnet nach tatsächlichem Aufwand. Teamverstärkung ohne Neueinstellung und ohne lange Bindung.",
       },
     ],
     situationTitle: "Warum individuelle Software",
     situation:
-      "Wichtige Informationen liegen verstreut in Tabellen, Ordnern und Postfächern. Daten werden mehrfach händisch übertragen, und der aktuelle Stand ist oft nur einzelnen Personen bekannt. Individuelle Software schafft Struktur, Übersicht und Verlässlichkeit.",
-    approachTitle: "Vorgehensweise",
-    steps: [
-      {
-        title: "Analyse",
-        text: "Unverbindliches Erstgespräch zu Abläufen und Anforderungen.",
-      },
-      {
-        title: "Konzept",
-        text: "Klarer Leistungsumfang mit Fixpreis.",
-      },
-      {
-        title: "Umsetzung",
-        text: "Entwicklung in Etappen mit regelmäßigen Zwischenständen.",
-      },
-      {
-        title: "Betrieb",
-        text: "Wartung, Support und Weiterentwicklung.",
-      },
-    ],
-    aboutTitle: "Über das Unternehmen",
+      "Standardlösungen verlangen, dass Sie Ihre Abläufe anpassen. Individuelle Software folgt Ihren Prozessen, statt umgekehrt. Der aktuelle Stand liegt an einem Ort, ohne doppelte Eingaben. Jedes Projekt beginnt mit einem unverbindlichen Gespräch. Abgerechnet wird je nach Vorhaben zum Fixpreis oder nach Aufwand.",
+    aboutTitle: "Über mich",
     about:
-      "Gegründet 2026 von Ahmedin Fajic, Softwareentwickler mit über sechs Jahren Erfahrung in Großprojekten, unter anderem bei Siemens und beim Bundesrechenzentrum. Jedes Projekt wird direkt vom Entwickler betreut, ohne Umwege über Vertrieb oder Projektmanagement.",
+      "Ich bin Softwareentwickler mit über sechs Jahren Erfahrung in Großprojekten, unter anderem für Siemens und das Bundesrechenzentrum. Die Selbstständigkeit besteht seit 2026. Jedes Projekt wird direkt von mir betreut, ohne Umweg über Vertrieb oder Projektmanagement.",
     aboutCv: "Lebenslauf ansehen",
     aboutPortraitAlt: "Ahmedin Fajic",
     contactTitle: "Unverbindliches Erstgespräch vereinbaren",
@@ -276,7 +254,7 @@ export const copy = {
       home: {
         title: "Software Development for Businesses | Ahmedin Fajic",
         description:
-          "Custom software for businesses and organisations: administration tools, client portals and websites. Built with experience from projects for Siemens and the public sector.",
+          "Workflow digitisation, web design and hourly development for businesses and organisations. Built with experience from projects for Siemens and the public sector.",
       },
       cv: {
         title: "CV | Ahmedin Fajic",
@@ -309,8 +287,7 @@ export const copy = {
     privacy: "Privacy",
     nav: {
       services: "services",
-      approach: "approach",
-      about: "about",
+      about: "about me",
       contact: "contact",
     },
     hero: {
@@ -329,43 +306,24 @@ export const copy = {
     servicesTitle: "Services",
     services: [
       {
-        title: "Administrative software",
-        text: "Central systems for orders, clients, staff and documents, replacing scattered spreadsheets and filing.",
+        title: "Digitising workflows",
+        text: "Processes that currently run through spreadsheets, paper forms and email are brought together in one continuous application, aligned with the way you work.",
       },
       {
-        title: "Client and partner portals",
-        text: "Secure exchange of documents, enquiries and records, without email back-and-forth or manual re-entry.",
+        title: "Web design",
+        text: "Clear, fast websites that build trust and work on every device. If needed, enquiries and bookings go straight into your existing systems.",
       },
       {
-        title: "Websites connected to your business systems",
-        text: "Enquiries, bookings and appointments go directly into the existing administration.",
+        title: "Hourly development",
+        text: "Additional developer capacity for agencies and companies, billed by actual effort. Extra hands for your team without hiring or long commitments.",
       },
     ],
     situationTitle: "Why custom software",
     situation:
-      "Important information sits scattered across spreadsheets, folders and inboxes. Data is transferred by hand more than once, and the current status is often known only to individual people. Custom software creates structure, overview and reliability.",
-    approachTitle: "Approach",
-    steps: [
-      {
-        title: "Analysis",
-        text: "A free, no-obligation consultation about your processes and requirements.",
-      },
-      {
-        title: "Concept",
-        text: "A clear scope of work at a fixed price.",
-      },
-      {
-        title: "Implementation",
-        text: "Development in stages, with regular progress updates.",
-      },
-      {
-        title: "Operation & support",
-        text: "Ongoing maintenance, updates and further development.",
-      },
-    ],
-    aboutTitle: "About the company",
+      "Off-the-shelf products ask you to adapt your processes. Custom software follows the way you work. The current status sits in one place, without entering the same data twice. Every project starts with a no-obligation conversation. Depending on the project, billing is fixed-price or by effort.",
+    aboutTitle: "About me",
     about:
-      "Founded in 2026 by Ahmedin Fajic, a software developer with more than six years of experience on large projects, including at Siemens and at the Bundesrechenzentrum. Each project is handled directly by the developer, without detours through sales or project management.",
+      "I am a software developer with more than six years of experience on large projects, including for Siemens and the Bundesrechenzentrum. Self-employment has been in place since 2026. Each project is handled directly by me, without a detour through sales or project management.",
     aboutCv: "View CV",
     aboutPortraitAlt: "Ahmedin Fajic",
     contactTitle: "Book a free initial consultation",
@@ -463,7 +421,7 @@ export const copy = {
       home: {
         title: "Razvoj softvera za preduzeća | Ahmedin Fajić",
         description:
-          "Softver po mjeri za preduzeća i organizacije: administracija, portali za klijente i web stranice. S iskustvom iz projekata za Siemens i javni sektor.",
+          "Digitalizacija radnih procesa, web dizajn i razvoj po satu za preduzeća i organizacije. S iskustvom iz projekata za Siemens i javni sektor.",
       },
       cv: {
         title: "Životopis | Ahmedin Fajić",
@@ -496,8 +454,7 @@ export const copy = {
     privacy: "Privatnost",
     nav: {
       services: "usluge",
-      approach: "postupak",
-      about: "o nama",
+      about: "o meni",
       contact: "kontakt",
     },
     hero: {
@@ -516,43 +473,24 @@ export const copy = {
     servicesTitle: "Usluge",
     services: [
       {
-        title: "Administrativni softver",
-        text: "Centralni sistemi za narudžbe, klijente, zaposlene i dokumente, kao zamjena za rasute Excel tabele i fascikle.",
+        title: "Digitalizacija radnih procesa",
+        text: "Tokovi rada koji danas idu preko Excel tabela, papirnih obrazaca i e-mailova spajaju se u jednu povezanu aplikaciju, usklađenu s vašim načinom rada.",
       },
       {
-        title: "Portali za klijente i partnere",
-        text: "Sigurna razmjena dokumenata, upita i priloga, bez dopisivanja e-mailom i ručnog ponovnog unosa podataka.",
+        title: "Web dizajn",
+        text: "Jasne i brze web stranice koje grade povjerenje i rade na svakom uređaju. Po želji, upiti i rezervacije stižu direktno u vaše postojeće sisteme.",
       },
       {
-        title: "Web stranice povezane s vašim poslovnim sistemima",
-        text: "Upiti, rezervacije i termini ulaze direktno u postojeću administraciju.",
+        title: "Razvoj po satu",
+        text: "Dodatni developerski kapacitet za agencije i preduzeća, obračun prema stvarnom utrošku vremena. Pojačanje tima bez novog zapošljavanja i dugoročnih obaveza.",
       },
     ],
-    situationTitle: "Zašto softver po mjeri",
+    situationTitle: "Zašto individualni softver",
     situation:
-      "Važne informacije leže rasute u tabelama, fasciklama i poštanskim sandučićima. Podaci se više puta prenose ručno, a trenutno stanje često znaju samo pojedine osobe. Softver po mjeri stvara strukturu, pregled i pouzdanost.",
-    approachTitle: "Postupak",
-    steps: [
-      {
-        title: "Analiza",
-        text: "Neobavezujući prvi razgovor o tokovima rada i zahtjevima.",
-      },
-      {
-        title: "Koncept",
-        text: "Jasan obim rada uz fiksnu cijenu.",
-      },
-      {
-        title: "Realizacija",
-        text: "Razvoj u etapama, uz redovne prikaze trenutnog stanja.",
-      },
-      {
-        title: "Održavanje i podrška",
-        text: "Redovno održavanje, ažuriranja i dalji razvoj.",
-      },
-    ],
-    aboutTitle: "O preduzeću",
+      "Standardna rješenja traže da svoje procese prilagodite. Individualni softver prati vaš način rada. Trenutno stanje je na jednom mjestu, bez ponovnog unosa istih podataka. Svaki projekat počinje neobaveznim razgovorom. Ovisno o projektu, obračun je po fiksnoj cijeni ili prema utrošku vremena.",
+    aboutTitle: "O meni",
     about:
-      "Preduzeće je 2026. godine osnovao Ahmedin Fajić, softverski inženjer s više od šest godina iskustva na velikim projektima, između ostalog u Siemensu i u Bundesrechenzentrumu. Svaki projekat vodi direktno razvojni inženjer, bez posredovanja prodaje ili upravljanja projektima.",
+      "Ja sam softverski inženjer s više od šest godina iskustva na velikim projektima, između ostalog za Siemens i Bundesrechenzentrum. Samostalna djelatnost postoji od 2026. Svaki projekat vodim direktno, bez posredovanja prodaje ili upravljanja projektima.",
     aboutCv: "Pogledajte životopis",
     aboutPortraitAlt: "Ahmedin Fajić",
     contactTitle: "Zakažite besplatan uvodni razgovor",
