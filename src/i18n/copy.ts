@@ -15,6 +15,7 @@ export type Copy = {
   skip: string;
   navLabel: string;
   language: string;
+  languageChoose: string;
   menu: string;
   closeMenu: string;
   newTab: string;
@@ -34,8 +35,10 @@ export type Copy = {
   aboutTitle: string;
   about: string;
   aboutCv: string;
+  aboutPortraitAlt: string;
   contactTitle: string;
   contactButton: string;
+  contactNote: string;
   mail: string;
   phone: string;
   phoneScan: string;
@@ -47,7 +50,7 @@ export type Copy = {
     languagesText: string;
     portraitAlt: string;
     entries: { years: string; place: string; note: string }[];
-    facts: { label: string; text: string }[];
+    facts: { label: string; text: string; years?: string }[];
   };
   imp: {
     name: string;
@@ -77,31 +80,32 @@ export const copy = {
   de: {
     meta: {
       home: {
-        title: "Individuelle Verwaltungssoftware in Wien – Ahmedin Fajic",
+        title: "Software-Entwicklung für Unternehmen | Ahmedin Fajic",
         description:
-          "Software-Entwicklung für Unternehmen und Organisationen. Verwaltungssoftware, Portale und Websites mit Anbindung an die bestehende Verwaltung. Wien.",
+          "Individuelle Software für Unternehmen und Organisationen: Verwaltung, Kundenportale und Websites. Mit Erfahrung aus Projekten für Siemens und den öffentlichen Sektor.",
       },
       cv: {
-        title: "Lebenslauf – Ahmedin Fajic",
+        title: "Lebenslauf | Ahmedin Fajic",
         description:
           "Lebenslauf von Ahmedin Fajic. Softwareentwicklung, unter anderem bei Siemens, beim Bundesrechenzentrum und für das österreichische Sozialministerium.",
       },
       impressum: {
-        title: "Impressum – Ahmedin Fajic",
+        title: "Impressum | Ahmedin Fajic",
         description:
           "Impressum von Ahmedin Fajic, Softwareentwicklung in Wien. Anschrift, Kontakt und gesetzliche Angaben.",
       },
       datenschutz: {
-        title: "Datenschutz – Ahmedin Fajic",
+        title: "Datenschutz | Ahmedin Fajic",
         description:
           "Datenschutzhinweise für ahmedinfajic.com. Keine Cookies, kein Tracking. Schriftarten werden selbst bereitgestellt.",
       },
     },
-    ogAlt: "Ahmedin Fajic, 2026. Schriftzug: Software design and development.",
+    ogAlt: "Software-Entwicklung für Unternehmen und Organisationen",
     jobTitle: "Softwareentwickler",
     skip: "Zum Inhalt",
     navLabel: "Navigation",
     language: "Sprache",
+    languageChoose: "Sprache wählen",
     menu: "Menü",
     closeMenu: "Schließen",
     newTab: "öffnet in neuem Tab",
@@ -115,7 +119,7 @@ export const copy = {
       contact: "kontakt",
     },
     hero: {
-      eyebrow: "Software-Entwicklung · Wien",
+      eyebrow: "Software-Entwicklung",
       title:
         "Software-Entwicklung für Unternehmen und Organisationen, die ihre Verwaltung digitalisieren wollen",
       sub: "Individuelle Lösungen statt Excel und Papier, entwickelt mit Erfahrung aus Großprojekten für internationale Konzerne und den öffentlichen Sektor.",
@@ -166,8 +170,11 @@ export const copy = {
     about:
       "Gegründet 2026 von Ahmedin Fajic, Softwareentwickler mit über sechs Jahren Erfahrung in Großprojekten, unter anderem bei Siemens und für das österreichische Sozialministerium. Jedes Projekt wird direkt vom Entwickler betreut, ohne Umwege über Vertrieb oder Projektmanagement.",
     aboutCv: "Lebenslauf ansehen",
-    contactTitle: "Unverbindliches Gespräch vereinbaren",
-    contactButton: "Kontakt",
+    aboutPortraitAlt: "Ahmedin Fajic",
+    contactTitle: "Unverbindliches Erstgespräch vereinbaren",
+    contactButton: "Termin anfragen",
+    contactNote:
+      "Antwort innerhalb von 24 Stunden. Zusammenarbeit ortsunabhängig, persönlich oder remote.",
     mail: "E-Mail",
     phone: "Telefon",
     phoneScan: "Scannen zum Anrufen",
@@ -189,7 +196,7 @@ export const copy = {
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Software für Konditionen zwischen Firmen",
+          note: "Software zur Verwaltung von Lieferanten- und Kundenkonditionen",
         },
         {
           years: "2020–2022",
@@ -200,11 +207,8 @@ export const copy = {
       facts: [
         {
           label: "Studium",
-          text: "Bachelor of Science in Engineering, FH Campus Wien, 2019–2023",
-        },
-        {
-          label: "Schule",
-          text: "Matura, BRG 16, Wien, 2008–2017",
+          text: "Bachelor of Science in Engineering, FH Campus Wien,",
+          years: "2019–2023",
         },
       ],
     },
@@ -233,7 +237,7 @@ export const copy = {
       },
       {
         title: "Hosting",
-        body: "Diese Website wird bei einem Hosting-Anbieter betrieben. Beim Aufruf der Seite können Zugriffsdaten (z. B. IP-Adresse, Datum und Uhrzeit, angeforderte Datei, Browserinformationen) in Server-Logfiles verarbeitet werden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb).",
+        body: "Diese Website wird bei Netlify Inc. (USA) gehostet. Beim Aufruf der Seite können Zugriffsdaten (z. B. IP-Adresse, Datum und Uhrzeit, angeforderte Datei, Browserinformationen) in Server-Logfiles verarbeitet werden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb). Die Übermittlung in die USA erfolgt auf Basis des EU-US Data Privacy Framework.",
       },
       {
         title: "Cookies und Tracking",
@@ -258,31 +262,32 @@ export const copy = {
   en: {
     meta: {
       home: {
-        title: "Custom administrative software in Vienna – Ahmedin Fajic",
+        title: "Software Development for Businesses | Ahmedin Fajic",
         description:
-          "Software development for companies and organisations. Administrative systems, portals and websites connected to existing administration. Vienna.",
+          "Custom software for businesses and organisations: administration tools, client portals and websites. Built with experience from projects for Siemens and the public sector.",
       },
       cv: {
-        title: "CV – Ahmedin Fajic",
+        title: "CV | Ahmedin Fajic",
         description:
           "CV of Ahmedin Fajic. Software development, including work at Siemens, at the Bundesrechenzentrum and for the Austrian Ministry of Social Affairs.",
       },
       impressum: {
-        title: "Imprint – Ahmedin Fajic",
+        title: "Imprint | Ahmedin Fajic",
         description:
           "Legal notice for Ahmedin Fajic, software development in Vienna. Address, contact and statutory details.",
       },
       datenschutz: {
-        title: "Privacy – Ahmedin Fajic",
+        title: "Privacy | Ahmedin Fajic",
         description:
           "Privacy notice for ahmedinfajic.com. No cookies and no tracking. Fonts are self-hosted.",
       },
     },
-    ogAlt: "Ahmedin Fajic, 2026. Lettering: Software design and development.",
+    ogAlt: "Software development for businesses and organisations",
     jobTitle: "Software developer",
     skip: "Skip to content",
     navLabel: "Navigation",
     language: "Language",
+    languageChoose: "Choose language",
     menu: "Menu",
     closeMenu: "Close",
     newTab: "opens in a new tab",
@@ -296,11 +301,11 @@ export const copy = {
       contact: "contact",
     },
     hero: {
-      eyebrow: "Software development · Vienna",
+      eyebrow: "Software development",
       title:
         "Software development for companies and organisations that want to digitise their administration",
       sub: "Custom solutions in place of spreadsheets and paper, developed with experience from large projects for international corporations and the public sector.",
-      primary: "Arrange an initial conversation",
+      primary: "Book a free initial consultation",
       secondary: "View services",
     },
     trustLabel: "Experience",
@@ -314,7 +319,7 @@ export const copy = {
       },
       {
         title: "Client and partner portals",
-        text: "Secure exchange of documents, enquiries and records, without email traffic and breaks between systems.",
+        text: "Secure exchange of documents, enquiries and records, without email back-and-forth or manual re-entry.",
       },
       {
         title: "Websites with system connection",
@@ -339,7 +344,7 @@ export const copy = {
         text: "Development in stages, with regular progress updates.",
       },
       {
-        title: "Operation",
+        title: "Operation & support",
         text: "Maintenance, support and further development.",
       },
     ],
@@ -347,8 +352,10 @@ export const copy = {
     about:
       "Founded in 2026 by Ahmedin Fajic, a software developer with more than six years of experience on large projects, including at Siemens and for the Austrian Ministry of Social Affairs. Each project is handled directly by the developer, without detours through sales or project management.",
     aboutCv: "View CV",
-    contactTitle: "Arrange a no-obligation conversation",
-    contactButton: "Contact",
+    aboutPortraitAlt: "Ahmedin Fajic",
+    contactTitle: "Book a free initial consultation",
+    contactButton: "Request an appointment",
+    contactNote: "Reply within 24 hours. Working with clients anywhere, in person or remotely.",
     mail: "Email",
     phone: "Phone",
     phoneScan: "Scan to call",
@@ -370,7 +377,7 @@ export const copy = {
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Software for terms between companies",
+          note: "Software for managing B2B pricing terms",
         },
         {
           years: "2020–2022",
@@ -380,12 +387,9 @@ export const copy = {
       ],
       facts: [
         {
-          label: "Study",
-          text: "Bachelor of Science in Engineering, FH Campus Wien, 2019–2023",
-        },
-        {
-          label: "School",
-          text: "Matura, BRG 16, Vienna, 2008–2017",
+          label: "Degree",
+          text: "Bachelor of Science in Engineering, FH Campus Wien,",
+          years: "2019–2023",
         },
       ],
     },
@@ -413,7 +417,7 @@ export const copy = {
       },
       {
         title: "Hosting",
-        body: "This website is hosted by a hosting provider. When the site is visited, access data (for example IP address, date and time, requested file and browser information) may be processed in server log files. The legal basis is Art. 6(1)(f) GDPR (legitimate interest in secure and stable operation).",
+        body: "This website is hosted by Netlify Inc. (USA). When the site is visited, access data (for example IP address, date and time, requested file and browser information) may be processed in server log files. The legal basis is Art. 6(1)(f) GDPR (legitimate interest in secure and stable operation). Transfers to the USA are based on the EU-US Data Privacy Framework.",
       },
       {
         title: "Cookies and tracking",
@@ -438,31 +442,32 @@ export const copy = {
   bs: {
     meta: {
       home: {
-        title: "Individualni administrativni softver u Beču – Ahmedin Fajic",
+        title: "Razvoj softvera za preduzeća | Ahmedin Fajić",
         description:
-          "Razvoj softvera za preduzeća i organizacije. Administrativni sistemi, portali i web stranice povezane s postojećom administracijom. Beč.",
+          "Softver po mjeri za preduzeća i organizacije: administracija, portali za klijente i web stranice. S iskustvom iz projekata za Siemens i javni sektor.",
       },
       cv: {
-        title: "Životopis – Ahmedin Fajic",
+        title: "Životopis | Ahmedin Fajić",
         description:
           "Životopis Ahmedina Fajića. Razvoj softvera, između ostalog u Siemensu, u Bundesrechenzentrumu i za austrijsko Ministarstvo socijalnih poslova.",
       },
       impressum: {
-        title: "Impresum – Ahmedin Fajic",
+        title: "Impresum | Ahmedin Fajić",
         description:
           "Impresum Ahmedina Fajića, razvoj softvera u Beču. Adresa, kontakt i zakonski podaci.",
       },
       datenschutz: {
-        title: "Privatnost – Ahmedin Fajic",
+        title: "Privatnost | Ahmedin Fajić",
         description:
           "Napomena o privatnosti za ahmedinfajic.com. Nema kolačića ni praćenja. Fontovi se isporučuju s ove stranice.",
       },
     },
-    ogAlt: "Ahmedin Fajic, 2026. Natpis: Software design and development.",
+    ogAlt: "Razvoj softvera za preduzeća i organizacije",
     jobTitle: "Softverski inženjer",
     skip: "Na sadržaj",
     navLabel: "Navigacija",
     language: "Jezik",
+    languageChoose: "Izaberite jezik",
     menu: "Meni",
     closeMenu: "Zatvorite",
     newTab: "otvara se u novom tabu",
@@ -476,10 +481,10 @@ export const copy = {
       contact: "kontakt",
     },
     hero: {
-      eyebrow: "Razvoj softvera · Beč",
+      eyebrow: "Razvoj softvera",
       title:
         "Razvoj softvera za preduzeća i organizacije koje žele digitalizovati svoju administraciju",
-      sub: "Individualna rješenja umjesto Excela i papira, razvijena na osnovu iskustva iz velikih projekata za međunarodne koncerne i javni sektor.",
+      sub: "Rješenja po mjeri umjesto Excela i papira, razvijena na osnovu iskustva iz velikih projekata za međunarodne koncerne i javni sektor.",
       primary: "Dogovorite prvi razgovor",
       secondary: "Pogledajte usluge",
     },
@@ -490,20 +495,20 @@ export const copy = {
     services: [
       {
         title: "Administrativni softver",
-        text: "Centralni sistemi za naloge, klijente, zaposlene i dokumente, kao zamjena za rasute Excel tabele i fascikle.",
+        text: "Centralni sistemi za narudžbe, klijente, zaposlene i dokumente, kao zamjena za rasute Excel tabele i fascikle.",
       },
       {
         title: "Portali za klijente i partnere",
-        text: "Sigurna razmjena dokumenata, upita i priloga, bez e-mail prometa i prekida između sistema.",
+        text: "Sigurna razmjena dokumenata, upita i priloga, bez dopisivanja e-mailom i prekida između sistema.",
       },
       {
         title: "Web stranice s vezom na sistem",
         text: "Upiti, rezervacije i termini ulaze direktno u postojeću administraciju.",
       },
     ],
-    situationTitle: "Zašto individualni softver",
+    situationTitle: "Zašto softver po mjeri",
     situation:
-      "Važne informacije leže rasute u tabelama, fasciklama i poštanskim sandučićima. Podaci se više puta prenose ručno, a trenutno stanje često znaju samo pojedine osobe. Individualni softver stvara strukturu, pregled i pouzdanost.",
+      "Važne informacije leže rasute u tabelama, fasciklama i poštanskim sandučićima. Podaci se više puta prenose ručno, a trenutno stanje često znaju samo pojedine osobe. Softver po mjeri stvara strukturu, pregled i pouzdanost.",
     approachTitle: "Postupak",
     steps: [
       {
@@ -519,16 +524,19 @@ export const copy = {
         text: "Razvoj u etapama, uz redovne prikaze trenutnog stanja.",
       },
       {
-        title: "U radu",
+        title: "Održavanje i podrška",
         text: "Održavanje, podrška i dalji razvoj.",
       },
     ],
     aboutTitle: "O preduzeću",
     about:
-      "Osnovano 2026. godine od Ahmedina Fajića, softverskog inženjera s više od šest godina iskustva na velikim projektima, između ostalog u Siemensu i za austrijsko Ministarstvo socijalnih poslova. Svaki projekat vodi direktno razvojni inženjer, bez posredovanja prodaje ili upravljanja projektima.",
+      "Preduzeće je 2026. godine osnovao Ahmedin Fajić, softverski inženjer s više od šest godina iskustva na velikim projektima, između ostalog u Siemensu i za austrijsko Ministarstvo socijalnih poslova. Svaki projekat vodi direktno razvojni inženjer, bez posredovanja prodaje ili upravljanja projektima.",
     aboutCv: "Pogledajte životopis",
-    contactTitle: "Dogovorite neobavezujući razgovor",
-    contactButton: "Kontakt",
+    aboutPortraitAlt: "Ahmedin Fajić",
+    contactTitle: "Zakažite besplatan uvodni razgovor",
+    contactButton: "Zatražite termin",
+    contactNote:
+      "Odgovor u roku od 24 sata. Saradnja bez obzira na lokaciju, lično ili na daljinu.",
     mail: "E-mail",
     phone: "Telefon",
     phoneScan: "Skenirajte za poziv",
@@ -550,7 +558,7 @@ export const copy = {
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Softver za uslove između firmi",
+          note: "Softver za upravljanje uslovima dobavljača i kupaca",
         },
         {
           years: "2020–2022",
@@ -561,11 +569,8 @@ export const copy = {
       facts: [
         {
           label: "Studij",
-          text: "Bachelor of Science in Engineering, FH Campus Wien, 2019–2023",
-        },
-        {
-          label: "Škola",
-          text: "Matura, BRG 16, Beč, 2008–2017",
+          text: "Bachelor of Science in Engineering, FH Campus Wien,",
+          years: "2019–2023",
         },
       ],
     },
@@ -593,7 +598,7 @@ export const copy = {
       },
       {
         title: "Hosting",
-        body: "Ova web stranica je smještena kod hosting pružatelja. Pri posjeti stranici mogu se obrađivati podaci o pristupu (npr. IP adresa, datum i vrijeme, zatražena datoteka, informacije o pregledniku) u serverskim logovima. Pravni osnov je čl. 6 st. 1 lit. f GDPR (legitimni interes za siguran i stabilan rad).",
+        body: "Ova web stranica je smještena kod Netlify Inc. (SAD). Pri posjeti stranici mogu se obrađivati podaci o pristupu (npr. IP adresa, datum i vrijeme, zatražena datoteka, informacije o pregledniku) u serverskim logovima. Pravni osnov je čl. 6 st. 1 lit. f GDPR (legitimni interes za siguran i stabilan rad). Prenos u SAD se vrši na osnovu EU-US Data Privacy Framework.",
       },
       {
         title: "Kolačići i praćenje",

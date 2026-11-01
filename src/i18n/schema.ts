@@ -1,8 +1,8 @@
 import { copy } from "./copy";
-import { email, linkedinUrl, site, type Lang } from "./site";
+import { absoluteUrl, email, linkedinUrl, site, type Lang } from "./site";
 
 export function jsonLd(lang: Lang): string {
-  const home = `${site}/${lang}`;
+  const home = absoluteUrl(lang);
   const data = {
     "@context": "https://schema.org",
     "@graph": [
@@ -12,7 +12,7 @@ export function jsonLd(lang: Lang): string {
         name: "Ahmedin Fajić",
         alternateName: "Ahmedin Fajic",
         url: home,
-        image: `${site}/og.jpg`,
+        image: `${site}/og-${lang}.jpg`,
         email,
         telephone: "+43-677-63472758",
         foundingDate: "2026",
@@ -27,7 +27,7 @@ export function jsonLd(lang: Lang): string {
         description: copy[lang].meta.home.description,
         contactPoint: {
           "@type": "ContactPoint",
-          contactType: "customer support",
+          contactType: "sales",
           email,
           telephone: "+43-677-63472758",
           availableLanguage: ["German", "English", "Bosnian"],

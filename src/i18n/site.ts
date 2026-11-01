@@ -31,7 +31,7 @@ export function isLang(value: string | undefined): value is Lang {
 }
 
 export function pathFor(lang: Lang, page: PageId = "home"): string {
-  return page === "home" ? `/${lang}` : `/${lang}/${page}`;
+  return page === "home" ? `/${lang}/` : `/${lang}/${page}/`;
 }
 
 export function absoluteUrl(lang: Lang, page: PageId = "home"): string {

@@ -280,6 +280,7 @@ main:focus {
   min-height: 44px;
   padding: 0.62em 1.15em;
   border: 1px solid #000;
+  border-radius: 0;
   background: #000;
   color: #fff;
   font: inherit;
@@ -287,6 +288,7 @@ main:focus {
   letter-spacing: -0.02em;
   text-decoration: none;
   cursor: pointer;
+  transition: border-radius 0.4s ease;
 }
 
 .text-link {
@@ -332,13 +334,34 @@ main:focus {
 }
 
 .measure p,
-#ueber .measure > p {
+#ueber .about-intro > p {
   font-size: clamp(19px, 1.55vw, 24px);
   line-height: 1.45;
   letter-spacing: -0.015em;
 }
 
-#ueber .measure > p::first-letter {
+.about-intro {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  column-gap: 1.35rem;
+  align-items: start;
+}
+
+.about-intro picture {
+  width: 108px;
+  height: 108px;
+}
+
+.about-portrait {
+  display: block;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+#ueber .about-intro > p::first-letter {
   float: left;
   margin: 0.06em 0.08em 0 0;
   font-size: 3.35em;
@@ -428,6 +451,15 @@ main:focus {
 
 .closing .button {
   margin-top: 1.15em;
+}
+
+.closing-note {
+  max-width: 34em;
+  margin-top: 0.9em;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: rgba(0, 0, 0, 0.62);
 }
 
 .sheet[hidden] {
@@ -693,10 +725,15 @@ main:focus {
 
 .cv-list li {
   display: grid;
-  grid-template-columns: 6.5em minmax(0, 1fr);
+  grid-template-columns: 9em minmax(0, 1fr);
   gap: 0.15em 1.2em;
   padding: 0.9em 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.cv-years,
+.cv-year {
+  white-space: nowrap;
 }
 
 .cv-years {
@@ -726,16 +763,9 @@ main:focus {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .button:hover {
-    background: #3a3a3a;
-    border-color: #3a3a3a;
-    color: #fff;
-  }
-
+  .button:hover,
   .text-link:hover {
-    background: transparent;
-    border-color: rgba(0, 0, 0, 0.45);
-    color: rgba(0, 0, 0, 0.45);
+    border-radius: 1.5em;
   }
 
   .sheet-link:hover .sheet-icon,
@@ -884,7 +914,9 @@ main:focus {
 
   .menu-toggle-word,
   .menu-toggle-mark,
-  .sheet-card {
+  .sheet-card,
+  .button,
+  .text-link {
     animation: none;
     transition: none;
   }

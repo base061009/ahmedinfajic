@@ -80,7 +80,21 @@ const t = copy[lang];
     <div class="wrap">
       <div class="measure">
         <h2>{t.aboutTitle}</h2>
-        <p>{t.about}</p>
+        <div class="about-intro">
+          <picture>
+            <source srcset="/portrait.avif" type="image/avif" />
+            <source srcset="/portrait.webp" type="image/webp" />
+            <img
+              class="about-portrait"
+              src="/portrait.png"
+              width="108"
+              height="108"
+              alt={t.aboutPortraitAlt}
+              decoding="async"
+            />
+          </picture>
+          <p>{t.about}</p>
+        </div>
         <ul class="inline-links">
           <li><a class="button" href={pathFor(lang, "cv")}>{t.aboutCv}</a></li>
           <li>
@@ -96,6 +110,8 @@ const t = copy[lang];
 
   <section class="closing" id="kontakt">
     <h2>{t.contactTitle}</h2>
+    <!-- TODO: Kalenderlink (meetingHref) einsetzen, sobald ein Terminlink feststeht. -->
     <button class="button" type="button" data-open="connect">{t.contactButton}</button>
+    <p class="closing-note">{t.contactNote}</p>
   </section>
 </Base>

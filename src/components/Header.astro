@@ -43,8 +43,13 @@ const links = [
         <span class="menu-toggle-mark is-out">×</span>
       </span>
     </button>
-    <button class="lang-switch" type="button" aria-haspopup="dialog" data-open="language">
-      <span class="sr-only">{t.language}</span>
+    <button
+      class="lang-switch"
+      type="button"
+      aria-haspopup="dialog"
+      aria-label={t.languageChoose}
+      data-open="language"
+    >
       <span aria-hidden="true">A文</span>
     </button>
   </nav>

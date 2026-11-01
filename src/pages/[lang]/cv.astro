@@ -21,14 +21,18 @@ const t = copy[lang];
       <div class="cv">
         <p class="eyebrow">{t.cv.eyebrow}</p>
         <h1>Ahmedin Fajic</h1>
-        <img
-          class="cv-photo"
-          src="/portrait.png"
-          width="1280"
-          height="720"
-          alt={t.cv.portraitAlt}
-          decoding="async"
-        />
+        <picture>
+          <source srcset="/portrait.avif" type="image/avif" />
+          <source srcset="/portrait.webp" type="image/webp" />
+          <img
+            class="cv-photo"
+            src="/portrait.png"
+            width="1280"
+            height="720"
+            alt={t.cv.portraitAlt}
+            decoding="async"
+          />
+        </picture>
         <h2>{t.cv.experience}</h2>
         <ol class="cv-list">
           {
@@ -49,7 +53,10 @@ const t = copy[lang];
             t.cv.facts.map((fact) => (
               <div>
                 <dt>{fact.label}</dt>
-                <dd>{fact.text}</dd>
+                <dd>
+                  {fact.text}
+                  {fact.years && <span class="cv-year"> {fact.years}</span>}
+                </dd>
               </div>
             ))
           }

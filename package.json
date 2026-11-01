@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/og.mjs && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -14,6 +14,8 @@
     "astro": "^5.16.0"
   },
   "devDependencies": {
+    "satori": "^0.63.2",
+    "sharp": "^0.35.5",
     "typescript": "~6.0.2"
   }
 }

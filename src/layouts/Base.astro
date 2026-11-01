@@ -1,6 +1,8 @@
 ---
 import "@fontsource/cardo/latin-400.css";
 import "@fontsource/cardo/latin-ext-400.css";
+import cardoLatin from "@fontsource/cardo/files/cardo-latin-400-normal.woff2";
+import cardoLatinExt from "@fontsource/cardo/files/cardo-latin-ext-400-normal.woff2";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -20,7 +22,7 @@ interface Props {
 const { lang, page, title, description, noindex = false } = Astro.props;
 const t = copy[lang];
 const canonical = absoluteUrl(lang, page);
-const image = `${site}/og.jpg`;
+const image = `${site}/og-${lang}.jpg`;
 const json = jsonLd(lang);
 ---
 
@@ -29,6 +31,8 @@ const json = jsonLd(lang);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" as="font" type="font/woff2" href={cardoLatin} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={cardoLatinExt} crossorigin />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/favicon.png" />
