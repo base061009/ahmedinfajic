@@ -87,8 +87,16 @@ const t = copy[lang];
         <h2>{t.aboutTitle}</h2>
         <div class="about-intro">
           <picture>
-            <source srcset="/portrait.avif" type="image/avif" />
-            <source srcset="/portrait.webp" type="image/webp" />
+            <source
+              type="image/avif"
+              srcset="/portrait-216.avif 216w, /portrait-324.avif 324w"
+              sizes="108px"
+            />
+            <source
+              type="image/webp"
+              srcset="/portrait-216.webp 216w, /portrait-324.webp 324w"
+              sizes="108px"
+            />
             <img
               class="about-portrait"
               src="/portrait.png"

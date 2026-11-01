@@ -48,7 +48,7 @@ const json = jsonLd(lang);
           ))}
           <link rel="alternate" hreflang="x-default" href={absoluteUrl("de", page)} />
           <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="Ahmedin Fajic" />
+          <meta property="og:site_name" content={t.name} />
           <meta property="og:locale" content={ogLocales[lang]} />
           {langs
             .filter((code) => code !== lang)

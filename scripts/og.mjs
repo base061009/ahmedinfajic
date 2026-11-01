@@ -95,3 +95,9 @@ for (const card of cards) {
 const portrait = join(root, "public/portrait.png");
 await sharp(portrait).webp({ quality: 80 }).toFile(join(root, "public/portrait.webp"));
 await sharp(portrait).avif({ quality: 45 }).toFile(join(root, "public/portrait.avif"));
+
+for (const width of [216, 324]) {
+  const resized = sharp(portrait).resize({ width, withoutEnlargement: true });
+  await resized.clone().webp({ quality: 80 }).toFile(join(root, "public", `portrait-${width}.webp`));
+  await resized.clone().avif({ quality: 45 }).toFile(join(root, "public", `portrait-${width}.avif`));
+}

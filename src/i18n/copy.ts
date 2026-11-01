@@ -11,6 +11,7 @@ export type PrivacySection = {
 export type Copy = {
   meta: Record<"home" | "cv" | "impressum" | "datenschutz", { title: string; description: string }>;
   ogAlt: string;
+  name: string;
   jobTitle: string;
   skip: string;
   navLabel: string;
@@ -105,12 +106,13 @@ export const copy = {
       },
     },
     ogAlt: "Software-Entwicklung für Unternehmen und Organisationen",
+    name: "Ahmedin Fajic",
     jobTitle: "Softwareentwickler",
     skip: "Zum Inhalt",
     navLabel: "Navigation",
     language: "Sprache",
     languageChoose: "Sprache wählen",
-    menu: "Menü",
+    menu: "menü",
     closeMenu: "Schließen",
     newTab: "öffnet in neuem Tab",
     legalNav: "Rechtliches",
@@ -294,12 +296,13 @@ export const copy = {
       },
     },
     ogAlt: "Software development for businesses and organisations",
+    name: "Ahmedin Fajic",
     jobTitle: "Software developer",
     skip: "Skip to content",
     navLabel: "Navigation",
     language: "Language",
     languageChoose: "Choose language",
-    menu: "Menu",
+    menu: "menu",
     closeMenu: "Close",
     newTab: "opens in a new tab",
     legalNav: "Legal",
@@ -316,11 +319,11 @@ export const copy = {
       title:
         "Software development for companies and organisations that want to digitise their administration",
       sub: "Custom solutions in place of spreadsheets and paper, developed with experience from large projects for international corporations and the public sector.",
-      primary: "Book a free initial consultation",
+      primary: "Book initial consultation",
       secondary: "View services",
     },
     trustYears: "6+",
-    trustYearsLabel: "Years of experience",
+    trustYearsLabel: "years of experience",
     trustBefore: "Experience on projects for ",
     trustNameA: "Siemens",
     trustMid: " and the ",
@@ -336,7 +339,7 @@ export const copy = {
         text: "Secure exchange of documents, enquiries and records, without email back-and-forth or manual re-entry.",
       },
       {
-        title: "Websites with system connection",
+        title: "Websites connected to your business systems",
         text: "Enquiries, bookings and appointments go directly into the existing administration.",
       },
     ],
@@ -347,7 +350,7 @@ export const copy = {
     steps: [
       {
         title: "Analysis",
-        text: "An initial conversation, without obligation, about processes and requirements.",
+        text: "A free, no-obligation consultation about your processes and requirements.",
       },
       {
         title: "Concept",
@@ -359,7 +362,7 @@ export const copy = {
       },
       {
         title: "Operation & support",
-        text: "Maintenance, support and further development.",
+        text: "Ongoing maintenance, updates and further development.",
       },
     ],
     aboutTitle: "About the company",
@@ -481,13 +484,14 @@ export const copy = {
       },
     },
     ogAlt: "Razvoj softvera za preduzeća i organizacije",
+    name: "Ahmedin Fajić",
     jobTitle: "Softverski inženjer",
     skip: "Na sadržaj",
     navLabel: "Navigacija",
     language: "Jezik",
     languageChoose: "Izaberite jezik",
-    menu: "Meni",
-    closeMenu: "Zatvorite",
+    menu: "meni",
+    closeMenu: "Zatvori",
     newTab: "otvara se u novom tabu",
     legalNav: "Pravno",
     imprint: "Impresum",
@@ -503,7 +507,7 @@ export const copy = {
       title:
         "Razvoj softvera za preduzeća i organizacije koje žele digitalizovati svoju administraciju",
       sub: "Rješenja po mjeri umjesto Excela i papira, razvijena na osnovu iskustva iz velikih projekata za međunarodne koncerne i javni sektor.",
-      primary: "Dogovorite prvi razgovor",
+      primary: "Zakažite uvodni razgovor",
       secondary: "Pogledajte usluge",
     },
     trustYears: "6+",
@@ -520,10 +524,10 @@ export const copy = {
       },
       {
         title: "Portali za klijente i partnere",
-        text: "Sigurna razmjena dokumenata, upita i priloga, bez dopisivanja e-mailom i prekida između sistema.",
+        text: "Sigurna razmjena dokumenata, upita i priloga, bez dopisivanja e-mailom i ručnog ponovnog unosa podataka.",
       },
       {
-        title: "Web stranice s vezom na sistem",
+        title: "Web stranice povezane s vašim poslovnim sistemima",
         text: "Upiti, rezervacije i termini ulaze direktno u postojeću administraciju.",
       },
     ],
@@ -546,7 +550,7 @@ export const copy = {
       },
       {
         title: "Održavanje i podrška",
-        text: "Održavanje, podrška i dalji razvoj.",
+        text: "Redovno održavanje, ažuriranja i dalji razvoj.",
       },
     ],
     aboutTitle: "O preduzeću",
@@ -578,12 +582,12 @@ export const copy = {
         {
           years: "2024",
           place: "Bundesrechenzentrum",
-          note: "Projektni dalji razvoj administrativnog softvera za austrijsko Ministarstvo socijalnih poslova.",
+          note: "Dalji razvoj administrativnog softvera za austrijsko Ministarstvo socijalnih poslova.",
         },
         {
           years: "2022–2024",
           place: "IBB Adaptive Solutions",
-          note: "Razvoj ERP i CRM sistema za upravljanje uslovima.",
+          note: "Razvoj ERP i CRM sistema za upravljanje cjenovnim uslovima i rabatima.",
         },
         {
           years: "2020–2022",
