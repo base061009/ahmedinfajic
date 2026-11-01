@@ -126,9 +126,8 @@ export const copy = {
     },
     hero: {
       eyebrow: "Software-Entwicklung",
-      title:
-        "Software-Entwicklung für Unternehmen und Organisationen, die ihre Verwaltung digitalisieren wollen",
-      sub: "Individuelle Lösungen statt Excel und Papier, entwickelt mit Erfahrung aus Großprojekten für internationale Konzerne und den öffentlichen Sektor.",
+      title: "Software für die Verwaltung Ihrer Arbeitsprozesse",
+      sub: "Individuell entwickelte Software, die Ihre Abläufe digital abbildet und an einem Ort zusammenführt. Mit Erfahrung aus Großprojekten für internationale Konzerne und den öffentlichen Sektor.",
       primary: "Erstgespräch vereinbaren",
       secondary: "Leistungen ansehen",
     },
@@ -316,9 +315,8 @@ export const copy = {
     },
     hero: {
       eyebrow: "Software development",
-      title:
-        "Software development for companies and organisations that want to digitise their administration",
-      sub: "Custom solutions in place of spreadsheets and paper, developed with experience from large projects for international corporations and the public sector.",
+      title: "Software for managing your work processes",
+      sub: "Custom-built software that maps your processes digitally and brings them together in one place. With experience from large projects for international corporations and the public sector.",
       primary: "Book initial consultation",
       secondary: "View services",
     },
@@ -504,9 +502,8 @@ export const copy = {
     },
     hero: {
       eyebrow: "Razvoj softvera",
-      title:
-        "Razvoj softvera za preduzeća i organizacije koje žele digitalizovati svoju administraciju",
-      sub: "Rješenja po mjeri umjesto Excela i papira, razvijena na osnovu iskustva iz velikih projekata za međunarodne koncerne i javni sektor.",
+      title: "Softver za upravljanje vašim radnim procesima",
+      sub: "Softver razvijen po mjeri, koji vaše tokove rada digitalno preslikava i objedinjuje na jednom mjestu. Na osnovu iskustva iz velikih projekata za međunarodne koncerne i javni sektor.",
       primary: "Zakažite uvodni razgovor",
       secondary: "Pogledajte usluge",
     },
