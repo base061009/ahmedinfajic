@@ -1,0 +1,59 @@
+---
+import type { PortalStep } from "../i18n/portal";
+
+type Picture = { src: string; width: number; height: number };
+type Mark = { n: number; x: number; y: number };
+
+interface Props {
+  step: PortalStep;
+  marks: Mark[];
+  eager?: boolean;
+  webp?: Picture;
+  webp2?: Picture;
+  avif?: Picture;
+  avif2?: Picture;
+}
+
+const { step, marks, eager = false, webp, webp2, avif, avif2 } = Astro.props;
+const full = webp2 ?? webp ?? avif2 ?? avif;
+const srcset = (small?: Picture, large?: Picture) =>
+  [small ? `${small.src} ${step.kind === "phone" ? 390 : 1440}w` : "", large ? `${large.src} ${large.width}w` : ""]
+    .filter(Boolean)
+    .join(", ");
+---
+
+<article class="tour-step">
+  <figure class="shot">
+    {
+      full ? (
+        <picture>
+          {avif || avif2 ? (
+            <source type="image/avif" srcset={srcset(avif, avif2)} sizes={step.sizes} />
+          ) : null}
+          {webp || webp2 ? (
+            <source type="image/webp" srcset={srcset(webp, webp2)} sizes={step.sizes} />
+          ) : null}
+          <img
+            src={full.src}
+            width={full.width}
+            height={full.height}
+            alt={step.alt}
+            loading={eager ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </picture>
+      ) : null
+    }
+    {
+      marks.map((mark) => (
+        <span class="mark" style={`left:${mark.x}%;top:${mark.y}%`} aria-hidden="true">
+          {mark.n}
+        </span>
+      ))
+    }
+  </figure>
+  <div class="tour-copy">
+    <h3>{step.title}</h3>
+    <p>{step.text}</p>
+  </div>
+</article>

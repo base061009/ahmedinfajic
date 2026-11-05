@@ -21,14 +21,38 @@ const cards = [
   {
     file: "og-de.jpg",
     title: "Software-Entwicklung für Unternehmen und Organisationen",
+    width: 470,
+    size: 46,
   },
   {
     file: "og-en.jpg",
     title: "Software development for businesses and organisations",
+    width: 470,
+    size: 46,
   },
   {
     file: "og-bs.jpg",
     title: "Razvoj softvera za preduzeća i organizacije",
+    width: 470,
+    size: 46,
+  },
+  {
+    file: "og-portal-de.jpg",
+    title: "Mandantenportal für Steuerberatungskanzleien",
+    width: 760,
+    size: 42,
+  },
+  {
+    file: "og-portal-en.jpg",
+    title: "Client portal for tax advisory firms",
+    width: 760,
+    size: 42,
+  },
+  {
+    file: "og-portal-bs.jpg",
+    title: "Portal za klijente poreskih savjetnika",
+    width: 760,
+    size: 42,
   },
 ];
 
@@ -54,10 +78,10 @@ for (const card of cards) {
             props: {
               style: {
                 display: "flex",
-                width: "470px",
+                width: `${card.width}px`,
                 justifyContent: "center",
                 textAlign: "center",
-                fontSize: "46px",
+                fontSize: `${card.size}px`,
                 lineHeight: 1.18,
                 letterSpacing: "-0.8px",
               },

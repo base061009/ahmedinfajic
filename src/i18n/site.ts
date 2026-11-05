@@ -4,9 +4,15 @@ export const langs = ["de", "en", "bs"] as const;
 
 export type Lang = (typeof langs)[number];
 
-export type PageId = "home" | "cv" | "impressum" | "datenschutz";
+export type PageId = "home" | "cv" | "impressum" | "datenschutz" | "portal";
 
-export const pages: PageId[] = ["home", "cv", "impressum", "datenschutz"];
+export const pages: PageId[] = ["home", "cv", "impressum", "datenschutz", "portal"];
+
+export const portalSlug: Record<Lang, string> = {
+  de: "mandantenportal",
+  en: "client-portal",
+  bs: "portal-za-klijente",
+};
 
 export const ogLocales: Record<Lang, string> = {
   de: "de_AT",
@@ -31,6 +37,7 @@ export function isLang(value: string | undefined): value is Lang {
 }
 
 export function pathFor(lang: Lang, page: PageId = "home"): string {
+  if (page === "portal") return `/${lang}/${portalSlug[lang]}/`;
   if (lang === "de" && page === "home") return "/";
   return page === "home" ? `/${lang}/` : `/${lang}/${page}/`;
 }

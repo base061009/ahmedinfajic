@@ -1,0 +1,165 @@
+---
+import Base from "../layouts/Base.astro";
+import { portalCopy } from "../i18n/portal";
+import { pathFor, site, type Lang } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = portalCopy[lang];
+---
+
+<Base
+  lang={lang}
+  page="portal"
+  title={t.meta.title}
+  description={t.meta.description}
+  image={`${site}/og-portal-${lang}.jpg`}
+  imageAlt={t.ogAlt}
+>
+  <section class="hero portal-hero">
+    <a class="text-link portal-back" href={pathFor(lang, "home")}>{t.back}</a>
+    <div class="hero-inner">
+      <h1>{t.heroTitle}</h1>
+      <p class="hero-sub">{t.heroSub}</p>
+      <div class="portal-stage">
+        <div class="basis" data-features>
+          <p class="basis-label">{t.basisLabel}</p>
+          <ul class="feature-board">
+            {
+              t.groups.flatMap((group) =>
+                group.items.map((item, index) => (
+                  <li class:list={["feature", index === 0 && "is-lead"]}>
+                    <p class="feature-kicker">{group.title}</p>
+                    <h2>{item.title}</h2>
+                    <p>{item.text}</p>
+                  </li>
+                )),
+              )
+            }
+          </ul>
+          {/* TODO: Angaben zu Verschlüsselung, EU-Hosting und DSGVO vor Veröffentlichung bestätigen. */}
+          <p class="basis-note">{t.basisNote}</p>
+        </div>
+        <div class="portal-video" data-video-panel hidden>
+          <video
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="1440"
+            height="900"
+            poster="/mandantenportal/kanzlei-ablauf.jpg"
+            aria-label={t.firmVideoLabel}
+          >
+            <source data-src="/mandantenportal/kanzlei-ablauf.webm" type="video/webm" />
+            <source data-src="/mandantenportal/kanzlei-ablauf.mp4" type="video/mp4" />
+          </video>
+          <button
+            class="button video-toggle"
+            type="button"
+            data-video-toggle
+            data-play={t.play}
+            data-pause={t.pause}
+            aria-pressed="false"
+          >
+            {t.play}
+          </button>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <button class="button" type="button" data-open="connect">{t.primary}</button>
+        <button
+          class="text-link"
+          type="button"
+          data-open-demo
+          data-show={t.secondary}
+          data-hide={t.overview}
+          aria-pressed="false"
+        >
+          {t.secondary}
+        </button>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script is:inline>
+  const features = document.querySelector("[data-features]");
+  const panel = document.querySelector("[data-video-panel]");
+  const video = panel && panel.querySelector("video");
+  const toggle = panel && panel.querySelector("[data-video-toggle]");
+  const demoButtons = [...document.querySelectorAll("[data-open-demo]")];
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let armed = false;
+
+  function arm() {
+    if (!video || armed) return;
+    video.querySelectorAll("source").forEach((source) => {
+      if (!source.getAttribute("src") && source.dataset.src) source.src = source.dataset.src;
+    });
+    video.load();
+    armed = true;
+  }
+
+  function setPressed(playing) {
+    if (!toggle) return;
+    toggle.setAttribute("aria-pressed", playing ? "true" : "false");
+    toggle.textContent = playing ? toggle.dataset.pause : toggle.dataset.play;
+  }
+
+  function play() {
+    if (!video) return;
+    arm();
+    video.play().then(() => setPressed(true)).catch(() => setPressed(false));
+  }
+
+  function pause() {
+    if (!video || video.paused) {
+      setPressed(false);
+      return;
+    }
+    video.pause();
+    setPressed(false);
+  }
+
+  function showVideo() {
+    if (features) features.hidden = true;
+    if (panel) panel.hidden = false;
+    demoButtons.forEach((button) => {
+      button.textContent = button.dataset.hide || "";
+      button.setAttribute("aria-pressed", "true");
+    });
+    if (reduced) {
+      setPressed(false);
+      return;
+    }
+    play();
+  }
+
+  function showFeatures() {
+    pause();
+    if (panel) panel.hidden = true;
+    if (features) features.hidden = false;
+    demoButtons.forEach((button) => {
+      button.textContent = button.dataset.show || "";
+      button.setAttribute("aria-pressed", "false");
+    });
+  }
+
+  demoButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (panel && panel.hidden) showVideo();
+      else showFeatures();
+    });
+  });
+
+  if (toggle && video) {
+    toggle.addEventListener("click", () => {
+      if (video.paused) play();
+      else pause();
+    });
+  }
+</script>

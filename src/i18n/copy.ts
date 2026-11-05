@@ -24,7 +24,7 @@ export type Copy = {
   imprint: string;
   privacy: string;
   nav: { services: string; about: string; contact: string };
-  hero: { eyebrow: string; title: string; sub: string; primary: string; secondary: string };
+  hero: { eyebrow: string; title: string; primary: string; secondary: string };
   trustYears: string;
   trustYearsLabel: string;
   trustBefore: string;
@@ -123,8 +123,8 @@ export const copy = {
     },
     hero: {
       eyebrow: "Software-Entwicklung",
-      title: "Software für die Verwaltung Ihrer Arbeitsprozesse",
-      sub: "Individuell entwickelte Software, die Ihre Abläufe digital abbildet und an einem Ort zusammenführt. Mit Erfahrung aus Großprojekten für internationale Konzerne und den öffentlichen Sektor.",
+      title:
+        "Digitalisierung für Betriebe und Organisationen: Von benutzerfreundlichen Webseiten bis zur Verwaltungssoftware, die Ihre Arbeitsprozesse digital abbildet, um Fehler und Zeitaufwand zu reduzieren.",
       primary: "Erstgespräch vereinbaren",
       secondary: "Leistungen ansehen",
     },
@@ -292,8 +292,8 @@ export const copy = {
     },
     hero: {
       eyebrow: "Software development",
-      title: "Software for managing your work processes",
-      sub: "Custom-built software that maps your processes digitally and brings them together in one place. With experience from large projects for international corporations and the public sector.",
+      title:
+        "Digitalisation for businesses and organisations: from user-friendly websites to administrative software that maps your work processes digitally in order to reduce errors and time spent.",
       primary: "Book initial consultation",
       secondary: "View services",
     },
@@ -459,8 +459,8 @@ export const copy = {
     },
     hero: {
       eyebrow: "Razvoj softvera",
-      title: "Softver za upravljanje vašim radnim procesima",
-      sub: "Softver razvijen po mjeri, koji vaše tokove rada digitalno preslikava i objedinjuje na jednom mjestu. Na osnovu iskustva iz velikih projekata za međunarodne koncerne i javni sektor.",
+      title:
+        "Digitalizacija za preduzeća i organizacije: od web stranica jednostavnih za korištenje do softvera za upravljanje, koji vaše radne procese digitalno preslikava kako bi smanjio greške i utrošak vremena.",
       primary: "Zakažite uvodni razgovor",
       secondary: "Pogledajte usluge",
     },

@@ -1,0 +1,144 @@
+{
+  "mandant-upload": {
+    "notes": [
+      "Upload-Seite im Handyformat",
+      "Kanzleiname über der Begrüßung",
+      "Foto aufnehmen und Periode sichtbar"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 24.3,
+        "y": 17.3
+      },
+      {
+        "n": 2,
+        "x": 22.4,
+        "y": 60.7
+      }
+    ]
+  },
+  "mandant-zeitraum": {
+    "notes": [
+      "Geöffnete Periodenauswahl",
+      "Monate zum Zuordnen des Belegs",
+      "Datei oder Foto bleibt darüber sichtbar"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 50,
+        "y": 40.5
+      },
+      {
+        "n": 2,
+        "x": 25.8,
+        "y": 62.9
+      }
+    ]
+  },
+  "kanzlei-belege": {
+    "notes": [
+      "Belegliste mit Suche und Statusfilter",
+      "Mehrere Belege in einer Liste",
+      "Auswahlkästchen vor jedem Beleg"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 19,
+        "y": 36.7
+      },
+      {
+        "n": 2,
+        "x": 79.4,
+        "y": 24.8
+      }
+    ]
+  },
+  "kanzlei-beleg-detail": {
+    "notes": [
+      "Geöffneter Belegdialog",
+      "Datum, Richtung und Status ohne Änderung",
+      "Dialog danach geschlossen"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 70.6,
+        "y": 38.3
+      },
+      {
+        "n": 2,
+        "x": 70.6,
+        "y": 43.4
+      },
+      {
+        "n": 3,
+        "x": 70.6,
+        "y": 25.2
+      }
+    ]
+  },
+  "kanzlei-mandant": {
+    "notes": [
+      "Mandantenakte mit Stammdaten",
+      "Monatsübersicht unter Perioden",
+      "Fehlende und vorhandene Unterlagen nebeneinander"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 57.6,
+        "y": 71.9
+      }
+    ]
+  },
+  "kanzlei-export": {
+    "notes": [
+      "Export-Dialog ohne Download",
+      "Formate ZIP, CSV, BMD und RZL",
+      "Mit Abbrechen geschlossen"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 48.6,
+        "y": 9.3
+      },
+      {
+        "n": 2,
+        "x": 50,
+        "y": 57.1
+      }
+    ]
+  },
+  "kanzlei-protokoll": {
+    "notes": [
+      "Protokoll der Änderungen",
+      "Zeitpunkt und Person am Eintrag",
+      "Keine Änderung ausgelöst"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 19,
+        "y": 38.2
+      }
+    ]
+  },
+  "kanzlei-benutzer": {
+    "notes": [
+      "Benutzerverwaltung des Kanzleiteams",
+      "Rolle und zugewiesene Mandanten",
+      "Keine Benutzer angelegt oder geändert"
+    ],
+    "marks": [
+      {
+        "n": 1,
+        "x": 15.4,
+        "y": 28.3
+      }
+    ]
+  }
+}

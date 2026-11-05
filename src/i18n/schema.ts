@@ -1,11 +1,10 @@
 import { copy } from "./copy";
-import { absoluteUrl, email, linkedinUrl, site, type Lang } from "./site";
+import { portalCopy } from "./portal";
+import { absoluteUrl, email, linkedinUrl, site, type Lang, type PageId } from "./site";
 
-export function jsonLd(lang: Lang): string {
+export function jsonLd(lang: Lang, page: PageId = "home"): string {
   const home = absoluteUrl(lang);
-  const data = {
-    "@context": "https://schema.org",
-    "@graph": [
+  const graph: Record<string, unknown>[] = [
       {
         "@type": ["Organization", "ProfessionalService"],
         "@id": `${site}/#organization`,
@@ -58,8 +57,19 @@ export function jsonLd(lang: Lang): string {
         sameAs: [linkedinUrl],
         worksFor: { "@id": `${site}/#organization` },
       },
-    ],
-  };
+  ];
 
-  return JSON.stringify(data).replace(/</g, "\\u003c");
+  if (page === "portal") {
+    const portal = portalCopy[lang];
+    graph.push({
+      "@type": "Service",
+      serviceType: "Client portal development",
+      name: portal.schemaName,
+      description: portal.meta.description,
+      url: absoluteUrl(lang, "portal"),
+      provider: { "@id": `${site}/#organization` },
+    });
+  }
+
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
 }

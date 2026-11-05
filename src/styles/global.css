@@ -256,6 +256,13 @@ main:focus {
   text-wrap: balance;
 }
 
+.home-hero h1 {
+  max-width: 22em;
+  font-size: clamp(22px, 2.15vw, 34px);
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+
 .hero-sub {
   max-width: 36em;
   margin-top: 0.85em;
@@ -1059,6 +1066,11 @@ main:focus {
   .cv-line li {
     grid-template-columns: 5.4em minmax(0, 1fr);
   }
+
+  .portal-back {
+    left: 20px;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1074,4 +1086,139 @@ main:focus {
     animation: none;
     transition: none;
   }
+}
+
+.portal-hero {
+  align-items: flex-start;
+}
+
+.portal-hero .hero-inner {
+  width: min(100%, 920px);
+  padding-top: clamp(72px, 9vh, 96px);
+  padding-bottom: clamp(40px, 7vh, 72px);
+}
+
+.hero:has(.portal-back) {
+  position: relative;
+}
+
+.portal-back {
+  position: absolute;
+  top: clamp(20px, 3vh, 36px);
+  left: clamp(28px, 4vw, 48px);
+}
+
+.portal-stage {
+  width: 100%;
+  margin-top: clamp(28px, 4vh, 40px);
+}
+
+.basis {
+  width: 100%;
+  text-align: left;
+}
+
+.basis-label {
+  margin-bottom: 0.55rem;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.feature-board {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.feature {
+  min-width: 0;
+  padding: 0.75rem 0 0.85rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.feature-kicker {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 800px) {
+  .feature:not(.is-lead) .feature-kicker {
+    display: none;
+  }
+}
+
+.feature h2 {
+  margin-top: 0.15rem;
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.feature p:last-child {
+  margin-top: 0.35rem;
+  max-width: 18em;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.basis-note {
+  margin-top: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.basis[hidden],
+.portal-video[hidden] {
+  display: none;
+}
+
+.portal-hero .hero-actions {
+  margin-top: clamp(22px, 3.2vh, 32px);
+}
+
+.portal-video {
+  position: relative;
+  width: 100%;
+}
+
+.portal-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1440 / 900;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: #fffefc;
+}
+
+@media (min-width: 801px) {
+  .feature-board {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .feature {
+    padding: 0.85rem 1.15rem 1rem 0;
+  }
+
+  .feature:nth-child(3n + 2),
+  .feature:nth-child(3n) {
+    padding-left: 1.15rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.16);
+  }
+}
+
+.video-toggle {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
 }

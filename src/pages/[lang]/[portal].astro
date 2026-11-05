@@ -1,0 +1,17 @@
+---
+import PortalPage from "../../components/PortalPage.astro";
+import { isLang, langs, portalSlug } from "../../i18n/site";
+
+export function getStaticPaths() {
+  return langs.map((lang) => ({
+    params: { lang, portal: portalSlug[lang] },
+  }));
+}
+
+const lang = Astro.params.lang;
+if (!isLang(lang) || Astro.params.portal !== portalSlug[lang]) {
+  throw new Error("Unknown portal page");
+}
+---
+
+<PortalPage lang={lang} />
